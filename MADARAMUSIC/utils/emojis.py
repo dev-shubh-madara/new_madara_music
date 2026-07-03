@@ -1,4 +1,3 @@
-from pyrogram.enums import ButtonStyle
 
 # ── Premium Emoji IDs ──────────────────────────────────────────────────────────
 # From multiple packs (Emoji_fan37, LoveDayEmoji, Gojo_Emoji, Icons_Anime etc.)
@@ -66,7 +65,6 @@ E_PDF      = 5213268528664195706   # 📄 pdf (reuse clock)
 E_VCTOOLS  = 5213342880949157786   # 🎙️ vc tools (reuse mic)
 
 __all__ = [
-    "ButtonStyle",
     "E_SPARK", "E_STAR", "E_CROWN", "E_SUPPORT", "E_BULB", "E_UPDATE",
     "E_DIAMOND", "E_BELL", "E_PLAY", "E_PAUSE", "E_SKIP", "E_STOP",
     "E_SHUFFLE", "E_LOOP", "E_SPEED", "E_MUSIC", "E_HEADSET", "E_MIC",

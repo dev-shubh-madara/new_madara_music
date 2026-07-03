@@ -11,7 +11,10 @@ from MADARAMUSIC import app
 from MADARAMUSIC.utils import help_pannel
 from MADARAMUSIC.utils.database import get_lang
 from MADARAMUSIC.utils.decorators.language import LanguageStart, languageCB
-from MADARAMUSIC.utils.inline.help import help_back_markup, private_help_panel
+from MADARAMUSIC.utils.inline.help import (
+    help_back_markup, private_help_panel,
+    help_pannel_extra, help_pannel_premium,
+)
 from config import BANNED_USERS, START_IMG_URL, SUPPORT_CHAT, MADARA_IMG
 from strings import get_string, helpers
 from MADARAMUSIC.utils.stuffs.buttons import BUTTONS
@@ -104,6 +107,81 @@ async def helper_cb(client, CallbackQuery, _):
         await CallbackQuery.edit_message_text(helpers.HELP_14, reply_markup=keyboard)
     elif cb == "hb15":
         await CallbackQuery.edit_message_text(helpers.HELP_15, reply_markup=keyboard)
+    # ── Page-2 entries ──────────────────────────────────────
+    elif cb == "hb16":
+        await CallbackQuery.edit_message_text(helpers.HELP_16, reply_markup=keyboard)
+    elif cb == "hb17":
+        await CallbackQuery.edit_message_text(helpers.HELP_17, reply_markup=keyboard)
+    elif cb == "hb18":
+        await CallbackQuery.edit_message_text(helpers.HELP_18, reply_markup=keyboard)
+    elif cb == "hb19":
+        await CallbackQuery.edit_message_text(helpers.HELP_19, reply_markup=keyboard)
+    elif cb == "hb20":
+        await CallbackQuery.edit_message_text(helpers.HELP_20, reply_markup=keyboard)
+    elif cb == "hb21":
+        await CallbackQuery.edit_message_text(helpers.HELP_21, reply_markup=keyboard)
+    elif cb == "hb22":
+        await CallbackQuery.edit_message_text(helpers.HELP_22, reply_markup=keyboard)
+    elif cb == "hb23":
+        await CallbackQuery.edit_message_text(helpers.HELP_23, reply_markup=keyboard)
+    elif cb == "hb24":
+        await CallbackQuery.edit_message_text(helpers.HELP_24, reply_markup=keyboard)
+    # ── Page-3 premium entries ───────────────────────────────
+    elif cb == "hb25":
+        await CallbackQuery.edit_message_text(helpers.HELP_25, reply_markup=keyboard)
+    elif cb == "hb26":
+        await CallbackQuery.edit_message_text(helpers.HELP_26, reply_markup=keyboard)
+    elif cb == "hb27":
+        await CallbackQuery.edit_message_text(helpers.HELP_27, reply_markup=keyboard)
+    elif cb == "hb28":
+        await CallbackQuery.edit_message_text(helpers.HELP_28, reply_markup=keyboard)
+    elif cb == "hb29":
+        await CallbackQuery.edit_message_text(helpers.HELP_29, reply_markup=keyboard)
+    elif cb == "hb30":
+        await CallbackQuery.edit_message_text(helpers.HELP_30, reply_markup=keyboard)
+    elif cb == "hb31":
+        await CallbackQuery.edit_message_text(helpers.HELP_31, reply_markup=keyboard)
+    elif cb == "hb32":
+        await CallbackQuery.edit_message_text(helpers.HELP_32, reply_markup=keyboard)
+    elif cb == "hb33":
+        await CallbackQuery.edit_message_text(helpers.HELP_33, reply_markup=keyboard)
+    elif cb == "hb34":
+        await CallbackQuery.edit_message_text(helpers.HELP_34, reply_markup=keyboard)
+    elif cb == "hb35":
+        await CallbackQuery.edit_message_text(helpers.HELP_35, reply_markup=keyboard)
+    elif cb == "hb36":
+        await CallbackQuery.edit_message_text(helpers.HELP_36, reply_markup=keyboard)
+    # ── New premium features ─────────────────────────────────
+    elif cb == "hb37":
+        await CallbackQuery.edit_message_text(helpers.HELP_37, reply_markup=keyboard)
+    elif cb == "hb38":
+        await CallbackQuery.edit_message_text(helpers.HELP_38, reply_markup=keyboard)
+    elif cb == "hb39":
+        await CallbackQuery.edit_message_text(helpers.HELP_39, reply_markup=keyboard)
+    elif cb == "hb40":
+        await CallbackQuery.edit_message_text(helpers.HELP_40, reply_markup=keyboard)
+
+
+# ── Page navigation ──────────────────────────────────────────
+@app.on_callback_query(filters.regex("^help_page_1$") & ~BANNED_USERS)
+@languageCB
+async def help_page_1_cb(client, CallbackQuery, _):
+    await CallbackQuery.answer()
+    await CallbackQuery.edit_message_reply_markup(reply_markup=help_pannel(_))
+
+
+@app.on_callback_query(filters.regex("^help_page_2$") & ~BANNED_USERS)
+@languageCB
+async def help_page_2_cb(client, CallbackQuery, _):
+    await CallbackQuery.answer()
+    await CallbackQuery.edit_message_reply_markup(reply_markup=help_pannel_extra(_))
+
+
+@app.on_callback_query(filters.regex("^help_page_3$") & ~BANNED_USERS)
+@languageCB
+async def help_page_3_cb(client, CallbackQuery, _):
+    await CallbackQuery.answer()
+    await CallbackQuery.edit_message_reply_markup(reply_markup=help_pannel_premium(_))
 
 
 @app.on_callback_query(filters.regex("mbot_cb") & ~BANNED_USERS)

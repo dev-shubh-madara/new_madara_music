@@ -1,7 +1,6 @@
 # ╔══════════════════════════════════════════════════╗
 # ║        🎵  M A D A R A  M U S I C  🎵           ║
-# ║  The Most Powerful Telegram Music Bot            ║
-# ║  Built with ❤️ for music lovers everywhere       ║
+# ║  Welcome Card — New Premium Template             ║
 # ╚══════════════════════════════════════════════════╝
 import os
 import random
@@ -10,8 +9,8 @@ from logging import getLogger
 
 from pyrogram import Client, filters, enums
 from pyrogram.types import ChatMemberUpdated, InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram.enums import ParseMode, ChatMemberStatus, ButtonStyle
-from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageChops
+from pyrogram.enums import ParseMode, ChatMemberStatus
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageChops, ImageFilter
 
 from MADARAMUSIC import app
 from MADARAMUSIC.utils.database import add_served_chat, get_assistant, is_active_chat
@@ -20,21 +19,18 @@ from MADARAMUSIC.utils.emojis import E_HEART, E_SPARK, E_STAR, E_MUSIC, E_CROWN
 
 LOGGER = getLogger(__name__)
 
-# ── Resolves asset paths portably ────────────────────
+# ── Asset paths ─────────────────────────────────────────────
 _ASSETS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "assets")
 
-
-def _asset(name):
+def _asset(name: str) -> str:
     return os.path.join(_ASSETS, name)
 
+# ── Welcome background — new premium image ──────────────────
+WELCOME_BG   = _asset("welcome_new.png")  # 1448×1086 source
+FALLBACK_BG  = _asset("wel2.png")
 
-# ── 4 girl pics used as random welcome photos ─────────
-GIRL_PICS = [
-    _asset("girl1.png"),
-    _asset("girl2.png"),
-    _asset("girl3.png"),
-    _asset("girl4.png"),
-]
+# ── Girl pics for random sends ───────────────────────────────
+GIRL_PICS = [_asset(f"girl{i}.png") for i in range(1, 5)]
 
 
 class WelDatabase:
@@ -63,66 +59,88 @@ class temp:
     B_NAME  = None
 
 
-def circle(pfp, size=(500, 500), brightness_factor=1.1):
-    pfp = pfp.resize(size, Image.LANCZOS).convert("RGBA")
-    pfp = ImageEnhance.Brightness(pfp).enhance(brightness_factor)
-    bigsize = (pfp.size[0] * 3, pfp.size[1] * 3)
+def _circle_crop(img: Image.Image, size: tuple) -> Image.Image:
+    """Return circular-cropped, RGBA image."""
+    img = img.resize(size, Image.LANCZOS).convert("RGBA")
+    img = ImageEnhance.Brightness(img).enhance(1.1)
+    bigsize = (img.size[0] * 3, img.size[1] * 3)
     mask = Image.new("L", bigsize, 0)
-    draw = ImageDraw.Draw(mask)
-    draw.ellipse((0, 0) + bigsize, fill=255)
-    mask = mask.resize(pfp.size, Image.LANCZOS)
-    mask = ImageChops.darker(mask, pfp.split()[-1])
-    pfp.putalpha(mask)
-    return pfp
+    ImageDraw.Draw(mask).ellipse((0, 0) + bigsize, fill=255)
+    mask = mask.resize(img.size, Image.LANCZOS)
+    mask = ImageChops.darker(mask, img.split()[-1])
+    img.putalpha(mask)
+    return img
 
 
-def _get_welcome_bg():
-    """Return welcome card background. Uses girl3 or falls back to wel2.png."""
-    candidates = [_asset("girl3.png"), _asset("girl4.png"), _asset("wel2.png")]
-    for c in candidates:
-        if os.path.exists(c):
-            return c
-    return None
+def _draw_ring(draw: ImageDraw.Draw, cx: int, cy: int, r: int, width: int = 8):
+    """Draw a glowing ring around the profile picture."""
+    for col, w in [((100, 200, 255, 220), width + 4), ((255, 255, 255, 255), width)]:
+        draw.ellipse(
+            [cx - r - w // 2, cy - r - w // 2, cx + r + w // 2, cy + r + w // 2],
+            outline=col, width=3,
+        )
 
 
-def welcomepic(pic, user, chatname, user_id, uname, brightness_factor=1.1):
+def welcomepic(pic: str, user: str, chatname: str, user_id: int, uname: str | None) -> str:
     os.makedirs("downloads", exist_ok=True)
 
-    bg_path = _get_welcome_bg()
+    # ── Load & crop background ───────────────────────────────
+    bg_path = WELCOME_BG if os.path.exists(WELCOME_BG) else (FALLBACK_BG if os.path.exists(FALLBACK_BG) else None)
     if bg_path:
-        background = Image.open(bg_path).convert("RGBA").resize((1280, 720), Image.LANCZOS)
+        src = Image.open(bg_path).convert("RGBA")
+        # Resize to fill 1280 wide, then centre-crop to 1280×720
+        scale  = 1280 / src.width
+        new_h  = int(src.height * scale)
+        src    = src.resize((1280, new_h), Image.LANCZOS)
+        top    = max(0, (new_h - 720) // 2)
+        bg     = src.crop((0, top, 1280, top + 720))
     else:
-        background = Image.new("RGBA", (1280, 720), (10, 10, 30, 255))
+        bg = Image.new("RGBA", (1280, 720), (10, 10, 30, 255))
 
-    # dark overlay so text is readable
-    overlay = Image.new("RGBA", background.size, (0, 0, 0, 120))
-    background = Image.alpha_composite(background, overlay)
+    # Slightly darken to make text pop
+    overlay = Image.new("RGBA", bg.size, (0, 0, 0, 90))
+    bg      = Image.alpha_composite(bg, overlay)
 
-    pfp = Image.open(pic).convert("RGBA")
-    pfp = circle(pfp, size=(260, 260), brightness_factor=brightness_factor)
+    # ── Profile picture circle ───────────────────────────────
+    # Center of the circular frame in the welcome template:
+    #   source circle is at ~50% width, ~38% height of 1448×1086.
+    #   After scale + crop:
+    #     cx = 640  (50% of 1280)
+    #     cy raw = 1086*0.38 * (1280/1448) = ~366; after top-crop ~120 px → ~246
+    CIRCLE_SIZE = (240, 240)
+    CX, CY      = 640, 246
+    pfp_img     = _circle_crop(Image.open(pic).convert("RGBA"), CIRCLE_SIZE)
+    px          = CX - CIRCLE_SIZE[0] // 2
+    py          = CY - CIRCLE_SIZE[1] // 2
+    bg.paste(pfp_img, (px, py), pfp_img)
 
-    background.paste(pfp, (60, 230), pfp)
+    # Ring glow around profile pic
+    draw = ImageDraw.Draw(bg, "RGBA")
+    _draw_ring(draw, CX, CY, CIRCLE_SIZE[0] // 2 + 6)
 
-    draw = ImageDraw.Draw(background)
+    # ── Fonts ────────────────────────────────────────────────
     try:
-        font_big = ImageFont.truetype(_asset("font.ttf"), size=52)
-        font_med = ImageFont.truetype(_asset("font.ttf"), size=36)
-        font_sm  = ImageFont.truetype(_asset("font.ttf"), size=28)
-    except:
-        font_big = font_med = font_sm = ImageFont.load_default()
+        f_big  = ImageFont.truetype(_asset("font.ttf"), 54)
+        f_med  = ImageFont.truetype(_asset("font.ttf"), 34)
+        f_sm   = ImageFont.truetype(_asset("font.ttf"), 26)
+    except Exception:
+        f_big = f_med = f_sm = ImageFont.load_default()
 
-    # heading
-    draw.text((390, 200), "⎊ ᴡᴇʟᴄᴏᴍᴇ ⎊", fill=(255, 215, 0), font=font_big)
-    draw.text((390, 275), f"ɴᴀᴍᴇ : {user[:22]}", fill=(255, 255, 255), font=font_med)
-    draw.text((390, 330), f"ɪᴅ    : {user_id}", fill=(200, 200, 255), font=font_sm)
-    draw.text((390, 375), f"ᴜ     : @{uname if uname else 'None'}", fill=(200, 255, 200), font=font_sm)
-    draw.text((390, 425), f"ɢʀᴏᴜᴘ : {chatname[:24]}", fill=(255, 200, 200), font=font_sm)
+    # ── Text block — right of centre ─────────────────────────
+    TX = 700
+    TY = 420
+    draw.text((TX, TY),       "ᴡᴇʟᴄᴏᴍᴇ",              fill=(255, 80, 180), font=f_big, anchor="lm")
+    draw.text((TX, TY + 68),  f"ɴᴀᴍᴇ : {user[:22]}",   fill=(255, 255, 255), font=f_med, anchor="lm")
+    draw.text((TX, TY + 115), f"ɪᴅ   : {user_id}",     fill=(180, 200, 255), font=f_sm,  anchor="lm")
+    draw.text((TX, TY + 150), f"ᴜ    : @{uname or 'None'}", fill=(180, 255, 200), font=f_sm, anchor="lm")
+    draw.text((TX, TY + 185), f"ɢʀᴏᴜᴘ : {chatname[:22]}", fill=(255, 180, 200), font=f_sm, anchor="lm")
 
     out = f"downloads/welcome_{user_id}.png"
-    background.convert("RGB").save(out)
+    bg.convert("RGB").save(out, quality=95)
     return out
 
 
+# ─────────────────────────────────────────────────────────────
 @app.on_message(filters.command("welcome") & ~filters.private)
 async def auto_state(_, message):
     usage = (
@@ -140,7 +158,7 @@ async def auto_state(_, message):
             "❌ <b>ᴏɴʟʏ ᴀᴅᴍɪɴs ᴄᴀɴ ᴄʜᴀɴɢᴇ ᴡᴇʟᴄᴏᴍᴇ sᴇᴛᴛɪɴɢs!</b>",
             reply_markup=InlineKeyboardMarkup([[
                 InlineKeyboardButton("✖️ ᴄʟᴏsᴇ", callback_data="close",
-                                     style=ButtonStyle.DANGER, icon_custom_emoji_id=E_SPARK)
+)
             ]]),
         )
 
@@ -156,7 +174,7 @@ async def auto_state(_, message):
                 f"❌ <b>ᴡᴇʟᴄᴏᴍᴇ ᴅɪsᴀʙʟᴇᴅ ɪɴ</b> {message.chat.title}",
                 reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton("✅ ᴇɴᴀʙʟᴇ ᴀɢᴀɪɴ", callback_data="welcome_on",
-                                         style=ButtonStyle.SUCCESS, icon_custom_emoji_id=E_HEART)
+)
                 ]]),
             )
     elif state == "on":
@@ -168,7 +186,7 @@ async def auto_state(_, message):
                 f"✅ <b>ᴡᴇʟᴄᴏᴍᴇ ᴇɴᴀʙʟᴇᴅ ɪɴ</b> {message.chat.title}",
                 reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton("❌ ᴅɪsᴀʙʟᴇ", callback_data="welcome_off",
-                                         style=ButtonStyle.DANGER, icon_custom_emoji_id=E_SPARK)
+)
                 ]]),
             )
     else:
@@ -193,15 +211,14 @@ async def greet_new_member(_, member: ChatMemberUpdated):
 
     try:
         pic = await app.download_media(user.photo.big_file_id, file_name=f"pp{user.id}.png")
-    except:
+    except Exception:
         pic = _asset("upic.png")
 
-    # Delete old welcome message
     old = temp.MELCOW.get(f"welcome-{chat_id}")
     if old:
         try:
             await old.delete()
-        except:
+        except Exception:
             pass
 
     try:
@@ -217,11 +234,11 @@ async def greet_new_member(_, member: ChatMemberUpdated):
             chat_id,
             photo=welcomeimg,
             caption=(
-                "<blockquote><b>⎊ ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ɢʀᴏᴜᴘ ⎊</b></blockquote>\n\n"
-                f"🎵 <b>ɴᴀᴍᴇ :</b> {user.mention}\n"
-                f"🆔 <b>ɪᴅ   :</b> <code>{user.id}</code>\n"
-                f"👤 <b>ᴜsᴇʀ :</b> @{user.username if user.username else 'None'}\n"
-                f"👥 <b>ᴍᴇᴍʙᴇʀs :</b> {count}\n\n"
+                f"<emoji id='{E_CROWN}'>👑</emoji> <blockquote><b>ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ɢʀᴏᴜᴘ!</b></blockquote>\n\n"
+                f"<emoji id='{E_MUSIC}'>🎵</emoji> <b>ɴᴀᴍᴇ :</b> {user.mention}\n"
+                f"<emoji id='{E_STAR}'>⭐</emoji> <b>ɪᴅ   :</b> <code>{user.id}</code>\n"
+                f"<emoji id='{E_HEART}'>❤️</emoji> <b>ᴜsᴇʀ :</b> @{user.username or 'None'}\n"
+                f"<emoji id='{E_SPARK}'>✨</emoji> <b>ᴍᴇᴍʙᴇʀs :</b> {count}\n\n"
                 f"<i>⭐ ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ғᴀᴍɪʟʏ!</i>"
             ),
             reply_markup=InlineKeyboardMarkup([
@@ -229,34 +246,30 @@ async def greet_new_member(_, member: ChatMemberUpdated):
                     InlineKeyboardButton(
                         "👤 ᴠɪᴇᴡ ᴘʀᴏғɪʟᴇ",
                         url=f"tg://openmessage?user_id={user.id}",
-                        style=ButtonStyle.PRIMARY,
-                        icon_custom_emoji_id=E_STAR,
                     ),
-                ],
-                [
                     InlineKeyboardButton(
-                        "➕ ᴀᴅᴅ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ",
+                        "➕ ᴀᴅᴅ ᴛᴏ ɢʀᴏᴜᴘ",
                         url=f"https://t.me/{app.username}?startgroup=true",
-                        style=ButtonStyle.SUCCESS,
-                        icon_custom_emoji_id=E_MUSIC,
                     ),
                 ],
             ]),
         )
         temp.MELCOW[f"welcome-{chat_id}"] = msg
 
-        # Try to clean up profile pic download
         if pic != _asset("upic.png"):
             try:
                 os.remove(pic)
-            except:
+            except Exception:
                 pass
+        try:
+            os.remove(welcomeimg)
+        except Exception:
+            pass
 
-        # Auto-delete after 5 minutes
         await asyncio.sleep(300)
         try:
             await msg.delete()
-        except:
+        except Exception:
             pass
 
     except Exception as e:

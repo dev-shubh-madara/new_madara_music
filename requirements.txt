@@ -33,7 +33,7 @@ lexica-api
 motor 
 numpy
 opencv-python
-pillow==9.5.0
+pillow
 psutil
 pickledb
 pycountry
@@ -66,3 +66,5 @@ wget
 youtube-search
 youtube-search-python
 yt-dlp
+telethon
+aiohttp[speedups]

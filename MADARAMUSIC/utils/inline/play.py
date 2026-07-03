@@ -1,6 +1,5 @@
 import math
 from pyrogram.types import InlineKeyboardButton
-from pyrogram.enums import ButtonStyle
 from MADARAMUSIC import app
 import config
 from MADARAMUSIC.utils.formatters import time_to_seconds
@@ -16,22 +15,16 @@ def track_markup(_, videoid, user_id, channel, fplay):
             InlineKeyboardButton(
                 text=_["P_B_1"],
                 callback_data=f"MusicStream {videoid}|{user_id}|a|{channel}|{fplay}",
-                style=ButtonStyle.SUCCESS,
-                icon_custom_emoji_id=E_AUDIO,
             ),
             InlineKeyboardButton(
                 text=_["P_B_2"],
                 callback_data=f"MusicStream {videoid}|{user_id}|v|{channel}|{fplay}",
-                style=ButtonStyle.PRIMARY,
-                icon_custom_emoji_id=E_VIDEO,
             ),
         ],
         [
             InlineKeyboardButton(
                 text=_["CLOSE_BUTTON"],
                 callback_data=f"forceclose {videoid}|{user_id}",
-                style=ButtonStyle.DANGER,
-                icon_custom_emoji_id=E_CLOSE,
             ),
         ],
     ]
@@ -72,36 +65,26 @@ def stream_markup_timer(_, chat_id, played, dur):
             InlineKeyboardButton(
                 text="▶️ ʀᴇsᴜᴍᴇ",
                 callback_data=f"ADMIN Resume|{chat_id}",
-                style=ButtonStyle.SUCCESS,
-                icon_custom_emoji_id=E_PLAY,
             ),
             InlineKeyboardButton(
                 text="⏸ ᴘᴀᴜsᴇ",
                 callback_data=f"ADMIN Pause|{chat_id}",
-                style=ButtonStyle.PRIMARY,
-                icon_custom_emoji_id=E_PAUSE,
             ),
         ],
         [
             InlineKeyboardButton(
                 text="⏭ sᴋɪᴘ",
                 callback_data=f"ADMIN Skip|{chat_id}",
-                style=ButtonStyle.PRIMARY,
-                icon_custom_emoji_id=E_SKIP,
             ),
             InlineKeyboardButton(
                 text="⏹ sᴛᴏᴘ",
                 callback_data=f"ADMIN Stop|{chat_id}",
-                style=ButtonStyle.DANGER,
-                icon_custom_emoji_id=E_STOP,
             ),
         ],
         [
             InlineKeyboardButton(
                 text=_["CLOSE_BUTTON"],
                 callback_data="close",
-                style=ButtonStyle.DANGER,
-                icon_custom_emoji_id=E_CLOSE,
             ),
         ],
     ]
@@ -114,36 +97,26 @@ def stream_markup(_, chat_id):
             InlineKeyboardButton(
                 text="▶️ ʀᴇsᴜᴍᴇ",
                 callback_data=f"ADMIN Resume|{chat_id}",
-                style=ButtonStyle.SUCCESS,
-                icon_custom_emoji_id=E_PLAY,
             ),
             InlineKeyboardButton(
                 text="⏸ ᴘᴀᴜsᴇ",
                 callback_data=f"ADMIN Pause|{chat_id}",
-                style=ButtonStyle.PRIMARY,
-                icon_custom_emoji_id=E_PAUSE,
             ),
         ],
         [
             InlineKeyboardButton(
                 text="⏭ sᴋɪᴘ",
                 callback_data=f"ADMIN Skip|{chat_id}",
-                style=ButtonStyle.PRIMARY,
-                icon_custom_emoji_id=E_SKIP,
             ),
             InlineKeyboardButton(
                 text="⏹ sᴛᴏᴘ",
                 callback_data=f"ADMIN Stop|{chat_id}",
-                style=ButtonStyle.DANGER,
-                icon_custom_emoji_id=E_STOP,
             ),
         ],
         [
             InlineKeyboardButton(
                 text=_["CLOSE_BUTTON"],
                 callback_data="close",
-                style=ButtonStyle.DANGER,
-                icon_custom_emoji_id=E_CLOSE,
             ),
         ],
     ]
@@ -156,22 +129,16 @@ def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
             InlineKeyboardButton(
                 text=_["P_B_1"],
                 callback_data=f"SHUKLAPlaylists {videoid}|{user_id}|{ptype}|a|{channel}|{fplay}",
-                style=ButtonStyle.SUCCESS,
-                icon_custom_emoji_id=E_AUDIO,
             ),
             InlineKeyboardButton(
                 text=_["P_B_2"],
                 callback_data=f"SHUKLAPlaylists {videoid}|{user_id}|{ptype}|v|{channel}|{fplay}",
-                style=ButtonStyle.PRIMARY,
-                icon_custom_emoji_id=E_VIDEO,
             ),
         ],
         [
             InlineKeyboardButton(
                 text=_["CLOSE_BUTTON"],
                 callback_data=f"forceclose {videoid}|{user_id}",
-                style=ButtonStyle.DANGER,
-                icon_custom_emoji_id=E_CLOSE,
             ),
         ],
     ]
@@ -184,16 +151,12 @@ def livestream_markup(_, videoid, user_id, mode, channel, fplay):
             InlineKeyboardButton(
                 text=_["P_B_3"],
                 callback_data=f"LiveStream {videoid}|{user_id}|{mode}|{channel}|{fplay}",
-                style=ButtonStyle.DANGER,
-                icon_custom_emoji_id=E_LIVE,
             ),
         ],
         [
             InlineKeyboardButton(
                 text=_["CLOSE_BUTTON"],
                 callback_data=f"forceclose {videoid}|{user_id}",
-                style=ButtonStyle.DANGER,
-                icon_custom_emoji_id=E_CLOSE,
             ),
         ],
     ]
@@ -207,34 +170,24 @@ def slider_markup(_, videoid, user_id, query, query_type, channel, fplay):
             InlineKeyboardButton(
                 text=_["P_B_1"],
                 callback_data=f"MusicStream {videoid}|{user_id}|a|{channel}|{fplay}",
-                style=ButtonStyle.SUCCESS,
-                icon_custom_emoji_id=E_AUDIO,
             ),
             InlineKeyboardButton(
                 text=_["P_B_2"],
                 callback_data=f"MusicStream {videoid}|{user_id}|v|{channel}|{fplay}",
-                style=ButtonStyle.PRIMARY,
-                icon_custom_emoji_id=E_VIDEO,
             ),
         ],
         [
             InlineKeyboardButton(
                 text="◀️",
                 callback_data=f"slider B|{query_type}|{query}|{user_id}|{channel}|{fplay}",
-                style=ButtonStyle.PRIMARY,
-                icon_custom_emoji_id=E_BACK,
             ),
             InlineKeyboardButton(
                 text=_["CLOSE_BUTTON"],
                 callback_data=f"forceclose {query}|{user_id}",
-                style=ButtonStyle.DANGER,
-                icon_custom_emoji_id=E_CLOSE,
             ),
             InlineKeyboardButton(
                 text="▶️",
                 callback_data=f"slider F|{query_type}|{query}|{user_id}|{channel}|{fplay}",
-                style=ButtonStyle.PRIMARY,
-                icon_custom_emoji_id=E_NEXT,
             ),
         ],
     ]

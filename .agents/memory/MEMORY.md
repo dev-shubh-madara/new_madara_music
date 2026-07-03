@@ -1,0 +1,2 @@
+- [ButtonStyle removal](buttonstyle-removal.md) — pyrofork 2.3.69 has NO ButtonStyle or icon_custom_emoji_id; strip from all InlineKeyboardButton calls.
+- [Bot startup requirement](bot-startup.md) — Bot requires STRING_SESSION env var (Pyrogram assistant session) to start; bot itself generates these via /genstring.
