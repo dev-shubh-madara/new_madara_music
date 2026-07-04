@@ -34,7 +34,7 @@ instaloader
 lexica-api
 motor 
 numpy
-opencv-python
+opencv-python-headless
 pillow
 psutil
 pickledb

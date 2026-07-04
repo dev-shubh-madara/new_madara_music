@@ -101,3 +101,25 @@
 [04-Jul-26 17:40:23 - INFO] - apscheduler.scheduler - Added job "close_nightmode" to job store "default"
 [04-Jul-26 17:40:23 - INFO] - apscheduler.scheduler - Scheduler started
 [04-Jul-26 17:40:23 - INFO] - pikepdf._core - pikepdf C++ to Python logger bridge initialized
+[04-Jul-26 17:42:04 - INFO] - MADARAMUSIC.core.mongo - Connecting to your Mongo Database...
+[04-Jul-26 17:42:04 - INFO] - MADARAMUSIC.core.mongo - Connected to your Mongo Database.
+[04-Jul-26 17:42:04 - INFO] - MADARAMUSIC.core.dir - Directories Updated.
+[04-Jul-26 17:42:04 - INFO] - MADARAMUSIC.core.git - Git Client Found [VPS DEPLOYER]
+[04-Jul-26 17:42:04 - INFO] - MADARAMUSIC.misc - 𝗗𝗔𝗧𝗔𝗕𝗔𝗦𝗘 𝗟𝗢𝗔𝗗 𝗕𝗔𝗕𝗬🍫........
+[04-Jul-26 17:42:04 - INFO] - MADARAMUSIC.core.bot - Starting MADARA MUSIC Bot...
+[04-Jul-26 17:42:06 - INFO] - MADARAMUSIC.misc - 𝗦𝗨𝗗𝗢 𝗨𝗦𝗘𝗥 𝗗𝗢𝗡𝗘✨🎋.
+[04-Jul-26 17:42:12 - INFO] - MADARAMUSIC.core.bot - 🎵 MADARA MUSIC Bot Started as test aura music 
+[04-Jul-26 17:42:12 - INFO] - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+[04-Jul-26 17:42:12 - INFO] - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+[04-Jul-26 17:42:13 - INFO] - apscheduler.scheduler - Added job "start_nightmode" to job store "default"
+[04-Jul-26 17:42:13 - INFO] - apscheduler.scheduler - Added job "close_nightmode" to job store "default"
+[04-Jul-26 17:42:13 - INFO] - apscheduler.scheduler - Scheduler started
+[04-Jul-26 17:42:13 - INFO] - pikepdf._core - pikepdf C++ to Python logger bridge initialized
+[04-Jul-26 17:42:14 - ERROR] - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f7a993cf750>
+[04-Jul-26 17:43:43 - INFO] - MADARAMUSIC.core.mongo - Connecting to your Mongo Database...
+[04-Jul-26 17:43:43 - INFO] - MADARAMUSIC.core.mongo - Connected to your Mongo Database.
+[04-Jul-26 17:43:43 - INFO] - MADARAMUSIC.core.dir - Directories Updated.
+[04-Jul-26 17:43:43 - INFO] - MADARAMUSIC.core.git - Git Client Found [VPS DEPLOYER]
+[04-Jul-26 17:43:43 - INFO] - MADARAMUSIC.misc - 𝗗𝗔𝗧𝗔𝗕𝗔𝗦𝗘 𝗟𝗢𝗔𝗗 𝗕𝗔𝗕𝗬🍫........
+[04-Jul-26 17:43:43 - INFO] - MADARAMUSIC.core.bot - Starting MADARA MUSIC Bot...
