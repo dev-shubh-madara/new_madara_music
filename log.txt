@@ -183,3 +183,23 @@ client_session: <aiohttp.client.ClientSession object at 0x7f2202fb4c90>
 [04-Jul-26 17:49:39 - INFO] - MADARAMUSIC.core.git - Git Client Found [VPS DEPLOYER]
 [04-Jul-26 17:49:39 - INFO] - MADARAMUSIC.misc - 𝗗𝗔𝗧𝗔𝗕𝗔𝗦𝗘 𝗟𝗢𝗔𝗗 𝗕𝗔𝗕𝗬🍫........
 [04-Jul-26 17:49:39 - INFO] - MADARAMUSIC.core.bot - Starting MADARA MUSIC Bot...
+[04-Jul-26 17:49:50 - INFO] - MADARAMUSIC.core.mongo - Connecting to your Mongo Database...
+[04-Jul-26 17:49:50 - INFO] - MADARAMUSIC.core.mongo - Connected to your Mongo Database.
+[04-Jul-26 17:49:50 - INFO] - MADARAMUSIC.core.dir - Directories Updated.
+[04-Jul-26 17:49:50 - INFO] - MADARAMUSIC.core.git - Git Client Found [VPS DEPLOYER]
+[04-Jul-26 17:49:50 - INFO] - MADARAMUSIC.misc - 𝗗𝗔𝗧𝗔𝗕𝗔𝗦𝗘 𝗟𝗢𝗔𝗗 𝗕𝗔𝗕𝗬🍫........
+[04-Jul-26 17:49:50 - INFO] - MADARAMUSIC.core.bot - Starting MADARA MUSIC Bot...
+[04-Jul-26 17:49:52 - INFO] - MADARAMUSIC.misc - 𝗦𝗨𝗗𝗢 𝗨𝗦𝗘𝗥 𝗗𝗢𝗡𝗘✨🎋.
+[04-Jul-26 17:49:58 - INFO] - MADARAMUSIC.core.bot - 🎵 MADARA MUSIC Bot Started as test aura music 
+[04-Jul-26 17:49:58 - INFO] - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+[04-Jul-26 17:49:58 - INFO] - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+[04-Jul-26 17:49:58 - INFO] - apscheduler.scheduler - Added job "start_nightmode" to job store "default"
+[04-Jul-26 17:49:58 - INFO] - apscheduler.scheduler - Added job "close_nightmode" to job store "default"
+[04-Jul-26 17:49:58 - INFO] - apscheduler.scheduler - Scheduler started
+[04-Jul-26 17:49:59 - INFO] - pikepdf._core - pikepdf C++ to Python logger bridge initialized
+[04-Jul-26 17:49:59 - INFO] - MADARAMUSIC.plugins - ✅ All Features Loaded | MADARA MUSIC 🎵
+[04-Jul-26 17:49:59 - INFO] - MADARAMUSIC.core.userbot - Starting Assistants...
+[04-Jul-26 17:50:00 - ERROR] - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f3dccaedf10>
+[04-Jul-26 17:50:00 - ERROR] - asyncio - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f3dcbfa52d0>
