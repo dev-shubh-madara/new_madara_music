@@ -1,86 +1,297 @@
 # ╔══════════════════════════════════════════════════╗
 # ║        🎵  M A D A R A  M U S I C  🎵           ║
-# ║  The Most Powerful Telegram Music Bot            ║
-# ║  Built with ❤️ for music lovers everywhere       ║
+# ║  MongoDB AI Chatbot — No External API Required   ║
 # ╚══════════════════════════════════════════════════╝
-import requests
-from MADARAMUSIC import app
+import re
+from pyrogram import filters
 from pyrogram.types import Message
 from pyrogram.enums import ChatAction, ParseMode
-from pyrogram import filters
+from MADARAMUSIC import app
+from MADARAMUSIC.core.mongo import mongodb
+import config
 
-API_KEY = "abacf43bf0ef13f467283e5bc03c2e1f29dae4228e8c612d785ad428b32db6ce"
+# ── MongoDB collection ────────────────────────────────────────────
+_kb = mongodb.chatbot_knowledge
 
-BASE_URL = "https://api.together.xyz/v1/chat/completions"
+# ── Default seed knowledge ────────────────────────────────────────
+_SEED = [
+    {
+        "keywords": ["hello", "hi", "hey", "helo", "hii", "heyy", "howdy"],
+        "answer": "👋 ʜᴇʟʟᴏ! ɪ'ᴍ *MADARA MUSIC* ʙᴏᴛ. ʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ ᴛᴏᴅᴀʏ? 🎵",
+    },
+    {
+        "keywords": ["who", "are", "you", "bot", "name", "introduce", "yourself"],
+        "answer": "🤖 ɪ ᴀᴍ *MADARA MUSIC* — ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ᴍᴜsɪᴄ ʙᴏᴛ!\n\n🎵 ɪ ᴄᴀɴ ᴘʟᴀʏ ᴍᴜsɪᴄ, ᴍᴀɴᴀɢᴇ ǫᴜᴇᴜᴇs, ᴀɴᴅ ᴅᴏ ᴍᴜᴄʜ ᴍᴏʀᴇ!\n\n⚡ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀᴅᴀʀᴀ",
+    },
+    {
+        "keywords": ["owner", "creator", "developer", "dev", "made", "who made"],
+        "answer": f"👑 ᴍʏ ᴏᴡɴᴇʀ ɪs @{config.OWNER_USERNAME}\n\n🎵 ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀᴅᴀʀᴀ",
+    },
+    {
+        "keywords": ["play", "music", "song", "stream", "how to play"],
+        "answer": "🎵 ᴛᴏ ᴘʟᴀʏ ᴍᴜsɪᴄ, ᴜsᴇ:\n\n`/play [song name or YouTube link]`\n\n✅ ɪ sᴜᴘᴘᴏʀᴛ YouTube, Spotify, Apple Music & SoundCloud!\n\n⚡ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀᴅᴀʀᴀ",
+    },
+    {
+        "keywords": ["skip", "next", "change", "track"],
+        "answer": "⏭️ ᴛᴏ sᴋɪᴘ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ sᴏɴɢ:\n\n`/skip`\n\n✅ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ ᴛʜɪs ɪɴ ɢʀᴏᴜᴘs.",
+    },
+    {
+        "keywords": ["stop", "end", "leave", "quit"],
+        "answer": "⏹️ ᴛᴏ sᴛᴏᴘ sᴛʀᴇᴀᴍɪɴɢ:\n\n`/stop` or `/end`\n\n✅ ᴛʜɪs ᴡɪʟʟ ᴄʟᴇᴀʀ ᴛʜᴇ ǫᴜᴇᴜᴇ ᴀɴᴅ ʟᴇᴀᴠᴇ ᴛʜᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ.",
+    },
+    {
+        "keywords": ["pause", "resume"],
+        "answer": "⏸️ Pause/Resume ᴄᴏᴍᴍᴀɴᴅs:\n\n`/pause` — ᴘᴀᴜsᴇ ᴛʜᴇ sᴛʀᴇᴀᴍ\n`/resume` — ʀᴇsᴜᴍᴇ ᴛʜᴇ sᴛʀᴇᴀᴍ",
+    },
+    {
+        "keywords": ["queue", "playlist", "list", "songs", "queued"],
+        "answer": "📋 ᴛᴏ ᴄʜᴇᴄᴋ ᴛʜᴇ ǫᴜᴇᴜᴇ:\n\n`/queue` — sʜᴏᴡ ᴄᴜʀʀᴇɴᴛ ǫᴜᴇᴜᴇ\n\n✅ Yᴏᴜ ᴄᴀɴ ᴀᴅᴅ ᴍᴜʟᴛɪᴘʟᴇ sᴏɴɢs ᴀɴᴅ ᴛʜᴇʏ ᴡɪʟʟ ᴘʟᴀʏ ɪɴ ᴏʀᴅᴇʀ.",
+    },
+    {
+        "keywords": ["ping", "speed", "fast", "slow", "response"],
+        "answer": "⚡ ᴜsᴇ `/ping` ᴛᴏ ᴄʜᴇᴄᴋ ᴛʜᴇ ʙᴏᴛ's ʀᴇsᴘᴏɴsᴇ ᴛɪᴍᴇ ᴀɴᴅ sᴇʀᴠᴇʀ sᴛᴀᴛs!",
+    },
+    {
+        "keywords": ["help", "commands", "what can you do", "features"],
+        "answer": "📖 ᴜsᴇ `/help` ᴛᴏ sᴇᴇ ᴀʟʟ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs!\n\n🎵 I have 100+ features including music, admin tools, games, crypto, and more!",
+    },
+    {
+        "keywords": ["settings", "config", "configure"],
+        "answer": "⚙️ ᴜsᴇ `/settings` ᴛᴏ ᴄᴏɴꜰɪɢᴜʀᴇ ᴛʜᴇ ʙᴏᴛ ꜰᴏʀ ʏᴏᴜʀ ɢʀᴏᴜᴘ.",
+    },
+    {
+        "keywords": ["stats", "statistics", "info", "uptime"],
+        "answer": "📊 ᴜsᴇ `/stats` ᴛᴏ sᴇᴇ ʙᴏᴛ sᴛᴀᴛɪsᴛɪᴄs.\n`/ping` ꜰᴏʀ sᴇʀᴠᴇʀ ɪɴꜰᴏ.",
+    },
+    {
+        "keywords": ["loop", "repeat"],
+        "answer": "🔁 Loop Mode:\n\n`/loop` — ᴛᴏɢɢʟᴇ ʟᴏᴏᴘ\n`/loop enable` — ᴇɴᴀʙʟᴇ ʟᴏᴏᴩ\n`/loop disable` — ᴅɪsᴀʙʟᴇ ʟᴏᴏᴩ",
+    },
+    {
+        "keywords": ["volume", "vol", "loud", "quiet", "sound"],
+        "answer": "🔊 Volume:\n\n`/vol [0-200]` — sᴇᴛ ᴠᴏʟᴜᴍᴇ\nᴇxᴀᴍᴘʟᴇ: `/vol 150`",
+    },
+    {
+        "keywords": ["shuffle", "random", "mix"],
+        "answer": "🔀 Shuffle:\n\n`/shuffle` — sʜᴜꜰꜰʟᴇ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ǫᴜᴇᴜᴇ",
+    },
+    {
+        "keywords": ["speed", "rate", "fast", "slow", "tempo"],
+        "answer": "🚀 Playback Speed:\n\n`/speed [0.5-4.0]` — ᴄʜᴀɴɢᴇ sᴩᴇᴇᴅ\nᴇxᴀᴍᴘʟᴇ: `/speed 1.5`",
+    },
+    {
+        "keywords": ["upi", "pay", "payment", "qr", "money"],
+        "answer": "💳 UPI Payment:\n\n`/upi [UPI_ID]` — ɢᴇɴᴇʀᴀᴛᴇ ᴀ QR ᴄᴏᴅᴇ ꜰᴏʀ ᴀɴʏ UPI ɪᴅ",
+    },
+    {
+        "keywords": ["crypto", "bitcoin", "ethereum", "ton", "usdt", "price", "coin"],
+        "answer": "💰 Crypto Commands:\n\n`/ton` — TON ᴘʀɪᴄᴇ\n`/usdt` — Tether ᴩʀɪᴄᴇ\n`/tonbal [wallet]` — ᴄʜᴇᴄᴋ TON ᴡᴀʟʟᴇᴛ",
+    },
+    {
+        "keywords": ["github", "git", "repo", "code"],
+        "answer": f"🌐 GitHub Manager:\n\n`/github` — ᴍᴀɴᴀɢᴇ ɢɪᴛʜᴜʙ ʀᴇᴩᴏs\n\n🔗 Bot Repo: {config.UPSTREAM_REPO}",
+    },
+    {
+        "keywords": ["afk", "away", "offline", "busy"],
+        "answer": "🌙 AFK Mode:\n\n`/afk [reason]` — sᴇᴛ ʏᴏᴜʀsᴇʟꜰ ᴀs AFK\nBᴏᴛ ᴡɪʟʟ ᴀᴜᴛᴏ-ʀᴇᴩʟʏ ᴡʜᴇɴ ᴍᴇɴᴛɪᴏɴᴇᴅ.",
+    },
+    {
+        "keywords": ["fight", "game", "chatfight", "word", "emoji"],
+        "answer": "🎮 ChatFight Game:\n\n`/chatfight` — sᴛᴀʀᴛ ᴀ ᴡᴏʀᴅ/ᴇᴍᴏᴊɪ ɢᴀᴍᴇ\n`/gametop` — ᴠɪᴇᴡ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ",
+    },
+    {
+        "keywords": ["broadcast", "announce", "message all"],
+        "answer": "📢 Broadcast (Owner/Sudo only):\n\n`/broadcast [message]` — sᴇɴᴅ ᴛᴏ ᴀʟʟ ɢʀᴏᴜᴩs",
+    },
+    {
+        "keywords": ["ban", "kick", "mute", "restrict"],
+        "answer": "🔨 Admin Commands:\n\n`/ban` — ʙᴀɴ ᴀ ᴜsᴇʀ\n`/kick` — ᴋɪᴄᴋ ᴀ ᴜsᴇʀ\n`/mute` — ᴍᴜᴛᴇ ᴀ ᴜsᴇʀ\n\nReply to a user's message to use these.",
+    },
+    {
+        "keywords": ["translate", "language", "lang", "hindi", "english"],
+        "answer": "🌐 Translation:\n\n`/tr [language_code] [text]` — ᴛʀᴀɴsʟᴀᴛᴇ ᴛᴇxᴛ\nᴇxᴀᴍᴩʟᴇ: `/tr hi Hello world`",
+    },
+    {
+        "keywords": ["weather", "temperature", "forecast", "climate"],
+        "answer": "🌤️ Weather:\n\n`/weather [city]` — ɢᴇᴛ ᴡᴇᴀᴛʜᴇʀ ɪɴꜰᴏ\nᴇxᴀᴍᴩʟᴇ: `/weather Mumbai`",
+    },
+    {
+        "keywords": ["sticker", "stickers", "pack"],
+        "answer": "🎨 Stickers:\n\n`/kang` — ᴄʀᴇᴀᴛᴇ sᴛɪᴄᴋᴇʀ ꜰʀᴏᴍ ɪᴍᴀɢᴇ\n`/sticker` — ᴄᴏɴᴠᴇʀᴛ ɪᴍᴀɢᴇ ᴛᴏ sᴛɪᴄᴋᴇʀ",
+    },
+    {
+        "keywords": ["what is love", "love", "relationship"],
+        "answer": "❤️ Love is a beautiful feeling! 🌹\n\nBut for me, MUSIC is love! 🎵\n\nPlay your favorite song with `/play`",
+    },
+    {
+        "keywords": ["joke", "funny", "laugh", "humor"],
+        "answer": "😂 ᴜsᴇ `/joke` ꜰᴏʀ ʀᴀɴᴅᴏᴍ ᴊᴏᴋᴇs!\n\n🤣 ᴡʜʏ ᴅɪᴅ ᴛʜᴇ ᴍᴜsɪᴄɪᴀɴ ɢᴇᴛ ᴀʀʀᴇsᴛᴇᴅ?\nʙᴇᴄᴀᴜsᴇ ʜᴇ ɢᴏᴛ ᴄᴀᴜɢʜᴛ ɪɴ ᴀ ʙᴀss ᴄʟᴇꜰ! 🎵",
+    },
+    {
+        "keywords": ["thanks", "thank you", "thx", "ty", "appreciate"],
+        "answer": "😊 You're welcome! Always happy to help! 🎵\n\n⚡ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀᴅᴀʀᴀ",
+    },
+    {
+        "keywords": ["support", "help me", "problem", "issue", "error"],
+        "answer": f"🆘 ɴᴇᴇᴅ ʜᴇʟᴩ? ᴊᴏɪɴ ᴏᴜʀ sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ:\n\n👉 {config.SUPPORT_CHAT}\n📢 {config.SUPPORT_CHANNEL}",
+    },
+    {
+        "keywords": ["good morning", "morning", "gm"],
+        "answer": "🌅 Good Morning! 🌞\n\nStart your day with some music! 🎵\nUse `/play` to get the beats going!",
+    },
+    {
+        "keywords": ["good night", "night", "gn", "sleep"],
+        "answer": "🌙 Good Night! 🌟\n\nSleep well and wake up to great music! 🎵",
+    },
+    {
+        "keywords": ["how are you", "how r u", "how do you do", "sup", "wassup"],
+        "answer": "😄 ɪ'ᴍ ᴅᴏɪɴɢ ɢʀᴇᴀᴛ, ᴛʜᴀɴᴋs ꜰᴏʀ ᴀsᴋɪɴɢ! 🎵\n\nAlways ready to stream music for you! Use `/play` to start!",
+    },
+]
 
+_seeded = False
+
+
+async def _ensure_seeded():
+    """Seed default knowledge if the collection is empty."""
+    global _seeded
+    if _seeded:
+        return
+    count = await _kb.count_documents({})
+    if count == 0:
+        await _kb.insert_many(_SEED)
+    _seeded = True
+
+
+def _tokenize(text: str):
+    """Simple tokenizer — lowercase words stripped of punctuation."""
+    return set(re.sub(r"[^\w\s]", "", text.lower()).split())
+
+
+async def _find_best_answer(query: str) -> str | None:
+    """Find best matching answer using keyword overlap scoring."""
+    q_tokens = _tokenize(query)
+    if not q_tokens:
+        return None
+
+    best_score = 0
+    best_answer = None
+
+    async for doc in _kb.find({}):
+        kw = set(doc.get("keywords", []))
+        score = len(q_tokens & kw)
+        if score > best_score:
+            best_score = score
+            best_answer = doc.get("answer")
+
+    return best_answer if best_score > 0 else None
+
+
+# ── /ai  /ask  /chatgpt  /gpt  /solve  ───────────────────────────
 @app.on_message(
     filters.command(
         ["chatgpt", "ai", "ask", "gpt", "solve"],
-        prefixes=["+", ".", "/", "-", "", "$", "#", "&"],
+        prefixes=["/", "!", ".", "+"],
     )
 )
-async def chat_gpt(bot, message):
-    try:
-        # Typing action when the bot is processing the message
-        await bot.send_chat_action(message.chat.id, ChatAction.TYPING)
+async def chat_ai(bot, message: Message):
+    await _ensure_seeded()
 
-        if len(message.command) < 2:
-            # If no question is asked, send an example message
-            await message.reply_text(
-                "❍ ᴇxᴀᴍᴘʟᴇ:**\n\n/chatgpt ᴡʜᴏ ɪs ᴛʜᴇ ᴏᴡɴᴇʀ ᴏғ ˹ sᴛʀᴀɴɢᴇʀ ™˼?"
-            )
+    if len(message.command) < 2:
+        if message.reply_to_message and message.reply_to_message.text:
+            query = message.reply_to_message.text
         else:
-            # Extract the query from the user's message
-            query = message.text.split(' ', 1)[1]
-            print("Input query:", query)  # Debug input
+            return await message.reply_text(
+                "❍ **ᴜsᴀɢᴇ:**\n\n`/ai [your question]`\n\n"
+                "ᴇxᴀᴍᴩʟᴇ: `/ai how to play music`"
+            )
+    else:
+        query = message.text.split(None, 1)[1]
 
-            # Set up headers with Authorization and Content-Type
-            headers = {
-                "Authorization": f"Bearer {API_KEY}",
-                "Content-Type": "application/json"
-            }
+    await bot.send_chat_action(message.chat.id, ChatAction.TYPING)
 
-            # Prepare the payload with the correct model and user message
-            payload = {
-                "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",  # Change model if needed
-                "messages": [
-                    {
-                        "role": "user",
-                        "content": query  # User's question from the message
-                    }
-                ]
-            }
+    answer = await _find_best_answer(query)
 
-            # Send the POST request to the API
-            response = requests.post(BASE_URL, json=payload, headers=headers)
+    if answer:
+        await message.reply_text(
+            f"<code>ʀᴀᴅʜᴀ ᴍᴜsɪᴄ</code>\n\n"
+            f"🤖 **MADARA AI:**\n\n{answer}\n\n"
+            f"<code>ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀᴅᴀʀᴀ</code>",
+            parse_mode=ParseMode.HTML,
+        )
+    else:
+        await message.reply_text(
+            f"<code>ʀᴀᴅʜᴀ ᴍᴜsɪᴄ</code>\n\n"
+            "🤔 ɪ ᴅɪᴅɴ'ᴛ ᴜɴᴅᴇʀsᴛᴀɴᴅ ᴛʜᴀᴛ.\n\n"
+            "ᴛʀʏ ᴀsᴋɪɴɢ ᴀʙᴏᴜᴛ:\n"
+            "• ʜᴏᴡ ᴛᴏ ᴩʟᴀʏ ᴍᴜsɪᴄ\n"
+            "• ʙᴏᴛ ᴄᴏᴍᴍᴀɴᴅs\n"
+            "• ᴀᴅᴍɪɴ ᴛᴏᴏʟs\n"
+            "• ɢᴀᴍᴇs & ᴛᴏᴏʟs\n\n"
+            f"<code>ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀᴅᴀʀᴀ</code>",
+            parse_mode=ParseMode.HTML,
+        )
 
-            # Debugging: print raw response
-            print("API Response Text:", response.text)  # Print raw response
-            print("Status Code:", response.status_code)  # Check the status code
 
-            # If the response is empty or not successful, handle the error
-            if response.status_code != 200:
-                await message.reply_text(f"❍ ᴇʀʀᴏʀ: API request failed. Status code: {response.status_code}")
-            elif not response.text.strip():
-                await message.reply_text("❍ ᴇʀʀᴏʀ: API se koi valid data nahi mil raha hai. Response was empty.")
-            else:
-                # Attempt to parse the JSON response
-                try:
-                    response_data = response.json()
-                    print("API Response JSON:", response_data)  # Debug response JSON
+# ── /addqa — owner adds new Q&A ───────────────────────────────────
+@app.on_message(
+    filters.command("addqa", prefixes="/") & filters.user(config.OWNER_ID)
+)
+async def add_qa(bot, message: Message):
+    await _ensure_seeded()
+    usage = (
+        "❍ **Usage:** `/addqa keywords... | answer`\n\n"
+        "ᴇxᴀᴍᴩʟᴇ:\n`/addqa music play stream | To play music use /play command`"
+    )
+    if len(message.command) < 2:
+        return await message.reply_text(usage)
 
-                    # Get the assistant's response from the JSON data
-                    if "choices" in response_data and len(response_data["choices"]) > 0:
-                        result = response_data["choices"][0]["message"]["content"]
-                        await message.reply_text(
-                            f"{result} \n\nＡɴsᴡᴇʀᴇᴅ ʙʏ➛[ 𝐓ɪᴅᴀʟ ✘ 𝐒ᴜᴘᴘᴏʀᴛ](https://t.me/tidal_support)",
-                            parse_mode=ParseMode.MARKDOWN
-                        )
-                    else:
-                        await message.reply_text("❍ ᴇʀʀᴏʀ: No response from API.")
-                except ValueError:
-                    await message.reply_text("❍ ᴇʀʀᴏʀ: Invalid response format.")
-    except Exception as e:
-        # Catch any other exceptions and send an error message
-        await message.reply_text(f"**❍ ᴇʀʀᴏʀ: {e} ")
+    text = message.text.split(None, 1)[1]
+    if "|" not in text:
+        return await message.reply_text(usage)
 
+    parts = text.split("|", 1)
+    keywords = [k.strip().lower() for k in parts[0].split() if k.strip()]
+    answer = parts[1].strip()
+
+    if not keywords or not answer:
+        return await message.reply_text(usage)
+
+    await _kb.insert_one({"keywords": keywords, "answer": answer})
+    await message.reply_text(
+        f"✅ **Q&A Added!**\n\n"
+        f"🔑 **Keywords:** `{', '.join(keywords)}`\n"
+        f"💬 **Answer:** {answer[:100]}{'...' if len(answer) > 100 else ''}"
+    )
+
+
+# ── /listqa — show all Q&A entries ───────────────────────────────
+@app.on_message(
+    filters.command("listqa", prefixes="/") & filters.user(config.OWNER_ID)
+)
+async def list_qa(bot, message: Message):
+    await _ensure_seeded()
+    count = await _kb.count_documents({})
+    await message.reply_text(
+        f"📚 **Chatbot Knowledge Base**\n\n"
+        f"📊 Total entries: **{count}**\n\n"
+        f"ᴜsᴇ `/addqa` ᴛᴏ ᴀᴅᴅ ɴᴇᴡ Q&A ᴇɴᴛʀɪᴇs.\n"
+        f"ᴜsᴇ `/deleteqa [keyword]` ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴀɴ ᴇɴᴛʀʏ."
+    )
+
+
+# ── /deleteqa — remove Q&A entry ─────────────────────────────────
+@app.on_message(
+    filters.command("deleteqa", prefixes="/") & filters.user(config.OWNER_ID)
+)
+async def delete_qa(bot, message: Message):
+    await _ensure_seeded()
+    if len(message.command) < 2:
+        return await message.reply_text("❍ **Usage:** `/deleteqa [keyword]`")
+
+    keyword = message.command[1].lower()
+    result = await _kb.delete_one({"keywords": keyword})
+    if result.deleted_count:
+        await message.reply_text(f"✅ Deleted entry with keyword: `{keyword}`")
+    else:
+        await message.reply_text(f"❌ No entry found with keyword: `{keyword}`")
