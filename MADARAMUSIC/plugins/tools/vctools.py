@@ -18,9 +18,12 @@ from MADARAMUSIC import app, Userbot
 from typing import List, Union
 from MADARAMUSIC.core.call import MADARA as YUKII
 from pyrogram.types import VideoChatEnded
-from pytgcalls import PyTgCalls, StreamType
-from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
-from pytgcalls.exceptions import (NoActiveGroupCall, TelegramServerError, AlreadyJoinedError)
+from pytgcalls import PyTgCalls, exceptions as pytgcalls_exceptions, types as pytgcalls_types
+NoActiveGroupCall = pytgcalls_exceptions.NoActiveGroupCall
+# TelegramServerError and AlreadyJoinedError were renamed in pytgcalls 2.x
+TelegramServerError = getattr(pytgcalls_exceptions, "TelegramServerError", Exception)
+AlreadyJoinedError = getattr(pytgcalls_exceptions, "AlreadyJoinedError",
+                             getattr(pytgcalls_exceptions, "PyTgCallsAlreadyRunning", Exception))
 
 # ==================================================
 # 🔥 VC SOUND STATE & VOLUME BAR TRACKER 🔥
@@ -50,7 +53,7 @@ def generate_vol_bar(vol):
 async def strcall(client, message):
     assistant = await group_assistant(YUKII, message.chat.id)
     try:
-        await assistant.join_group_call(message.chat.id, AudioPiped("./MADARAMUSIC/assets/call.mp3"), stream_type=StreamType().pulse_stream)
+        await assistant.join_group_call(message.chat.id, pytgcalls_types.MediaStream("./MADARAMUSIC/assets/call.mp3"))
         text = "<blockquote><emoji id='6334598469746952256'>🫶</emoji> ʙᴇʟᴏᴠᴇᴅꜱ ɪɴ ᴛʜᴇ ᴄᴀʟʟ :\n\n"
         participants = await assistant.get_participants(message.chat.id)
         k = 0
