@@ -3,7 +3,6 @@
 # ║  The Most Powerful Telegram Music Bot            ║
 # ║  Built with ❤️ for music lovers everywhere       ║
 # ╚══════════════════════════════════════════════════╝
-from telegram import Update, Bot
 import httpx
 
 from MADARAMUSIC import app
