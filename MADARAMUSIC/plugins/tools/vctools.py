@@ -16,7 +16,7 @@ from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall, Edit
 from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant, ChatAdminRequired
 from MADARAMUSIC import app, Userbot
 from typing import List, Union
-from MADARAMUSIC.core.call import YUKII
+from MADARAMUSIC.core.call import MADARA as YUKII
 from pyrogram.types import VideoChatEnded
 from pytgcalls import PyTgCalls, StreamType
 from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped

@@ -4,7 +4,11 @@
 # ║  Built with ❤️ for music lovers everywhere       ║
 # ╚══════════════════════════════════════════════════╝
 import os
-import cv2
+try:
+    import cv2
+    CV2_OK = True
+except Exception:
+    CV2_OK = False
 from PIL import Image
 from pyrogram import Client, filters
 from MADARAMUSIC import app
@@ -32,6 +36,10 @@ async def tiny_sticker(client, message):
         file = "wel2.tgs"
         os.remove("json.json")
     elif ik.endswith((".gif", ".mp4")):
+        if not CV2_OK:
+            await kontol.edit_text("❌ cv2 unavailable on this server for video stickers.")
+            os.remove(ik)
+            return
         iik = cv2.VideoCapture(ik)
         _, busy = iik.read()
         cv2.imwrite("i.png", busy)
