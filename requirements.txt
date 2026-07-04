@@ -13,6 +13,8 @@
 # -----------------------------------------------
 
 aiofiles
+img2pdf
+matplotlib
 aiohttp
 apscheduler
 asyncio

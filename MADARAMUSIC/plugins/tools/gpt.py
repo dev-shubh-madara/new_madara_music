@@ -192,7 +192,7 @@ async def _find_best_answer(query: str) -> str | None:
     filters.command(
         ["chatgpt", "ai", "ask", "gpt", "solve"],
         prefixes=["/", "!", ".", "+"],
-    )
+    ) & ~config.BANNED_USERS
 )
 async def chat_ai(bot, message: Message):
     await _ensure_seeded()
@@ -272,12 +272,17 @@ async def add_qa(bot, message: Message):
 async def list_qa(bot, message: Message):
     await _ensure_seeded()
     count = await _kb.count_documents({})
-    await message.reply_text(
-        f"📚 **Chatbot Knowledge Base**\n\n"
-        f"📊 Total entries: **{count}**\n\n"
-        f"ᴜsᴇ `/addqa` ᴛᴏ ᴀᴅᴅ ɴᴇᴡ Q&A ᴇɴᴛʀɪᴇs.\n"
-        f"ᴜsᴇ `/deleteqa [keyword]` ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴀɴ ᴇɴᴛʀʏ."
-    )
+    lines = [f"📚 **Chatbot Knowledge Base** — {count} entries\n"]
+    idx = 1
+    async for doc in _kb.find({}, {"keywords": 1, "answer": 1}).limit(30):
+        kws = ", ".join(doc.get("keywords", [])[:5])
+        preview = str(doc.get("answer", ""))[:60].replace("\n", " ")
+        lines.append(f"{idx}. `{kws}` → {preview}…")
+        idx += 1
+    if count > 30:
+        lines.append(f"\n_(showing 30 of {count})_")
+    lines.append("\nᴜsᴇ `/addqa keywords | answer` ᴛᴏ ᴀᴅᴅ.\nᴜsᴇ `/deleteqa keyword` ᴛᴏ ᴅᴇʟᴇᴛᴇ.")
+    await message.reply_text("\n".join(lines))
 
 
 # ── /deleteqa — remove Q&A entry ─────────────────────────────────
