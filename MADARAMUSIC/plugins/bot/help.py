@@ -5,7 +5,7 @@
 # ╚══════════════════════════════════════════════════╝
 import random
 from typing import Union
-from pyrogram import filters, types
+from pyrogram import filters, types, enums
 from pyrogram.types import InlineKeyboardMarkup, Message, InlineKeyboardButton
 from MADARAMUSIC import app
 from MADARAMUSIC.utils import help_pannel
@@ -160,6 +160,10 @@ async def helper_cb(client, CallbackQuery, _):
         await CallbackQuery.edit_message_text(helpers.HELP_39, reply_markup=keyboard)
     elif cb == "hb40":
         await CallbackQuery.edit_message_text(helpers.HELP_40, reply_markup=keyboard)
+    elif cb == "hb41":
+        await CallbackQuery.edit_message_text(helpers.HELP_41, reply_markup=keyboard)
+    elif cb == "hb42":
+        await CallbackQuery.edit_message_text(helpers.HELP_42, reply_markup=keyboard)
 
 
 # ── Page navigation ──────────────────────────────────────────

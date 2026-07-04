@@ -292,3 +292,25 @@ HELP_40 = """<b><u>💻 ɢɪᴛʜᴜʙ ᴍᴀɴᴀɢᴇʀ :</u></b>
 • /gitbranch <code>owner/repo</code> — ʟɪsᴛ ʙʀᴀɴᴄʜᴇs
 • /gittoken <code>token</code> — sᴀᴠᴇ ʏᴏᴜʀ ᴛᴏᴋᴇɴ (ᴩᴍ ᴏɴʟʏ)
 """
+
+HELP_41 = """<b><u>💳 ᴜᴩɪ ᴩᴀʏᴍᴇɴᴛ :</u></b>
+
+Generate UPI QR codes directly in Telegram!
+
+• /setupi [upi@bank] : Save your UPI ID securely.
+• /gen [amount] : Generate a payment QR code (auto-deletes in 10 min).
+
+<i>Supports PhonePe, GPay, Paytm, and all UPI apps.</i>
+<i>Also works inline: @botusername gen 100</i>
+"""
+
+HELP_42 = """<b><u>⚡ ᴄʀʏᴩᴛᴏ ᴩʀɪᴄᴇs :</u></b>
+
+Live crypto prices & TON wallet balance!
+
+• /ton : Live TON coin price (USD & INR).
+• /usdt : Live USDT / Tether price.
+• /balance [address] : Check any TON wallet balance.
+
+<i>Powered by CoinGecko & TON API. Prices update in real-time.</i>
+"""

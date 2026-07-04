@@ -1,252 +1,247 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=230&section=header&text=MADARA%20MUSIC&fontSize=80&fontColor=fff&animation=twinkling&fontAlignY=38&desc=⚡%20The%20Most%20Powerful%20Telegram%20Music%20Bot%20⚡&descAlignY=60&descSize=18" width="100%"/>
+<img src="https://files.catbox.moe/5go4t6.jpg" width="200px" style="border-radius: 50%;" alt="MADARA MUSIC"/>
 
-<br/>
+# 🎵 MADARA MUSIC BOT
 
-[![Python](https://img.shields.io/badge/Python-3.10+-FFD43B?style=for-the-badge&logo=python&logoColor=blue&labelColor=000000)](https://python.org)
-[![Pyrogram](https://img.shields.io/badge/PyroFork-KuriGram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white&labelColor=000000)](https://github.com/KurimuzonAkuma/pyrogram)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white&labelColor=000000)](https://mongodb.com)
-[![PyTgCalls](https://img.shields.io/badge/PyTgCalls-Voice%20Engine-FF6B6B?style=for-the-badge&logo=webrtc&logoColor=white&labelColor=000000)](https://github.com/pytgcalls/pytgcalls)
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Pyrogram-2.x-red?style=for-the-badge&logo=telegram&logoColor=white"/>
+  <img src="https://img.shields.io/badge/MongoDB-Atlas-green?style=for-the-badge&logo=mongodb&logoColor=white"/>
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge"/>
+</p>
 
-<br/>
+<p align="center">
+  <b>The Most Powerful & Feature-Rich Telegram Music Bot</b><br/>
+  Stream music · Fight · Pay · Track Crypto · Manage GitHub — all in one bot.
+</p>
 
-[![Stars](https://img.shields.io/github/stars/ragini19854-prog/new_madara_music?color=FFD700&style=for-the-badge&logo=github&labelColor=000000)](https://github.com/ragini19854-prog/new_madara_music/stargazers)
-[![Forks](https://img.shields.io/github/forks/ragini19854-prog/new_madara_music?color=9D4EDD&style=for-the-badge&logo=github&labelColor=000000)](https://github.com/ragini19854-prog/new_madara_music/network/members)
-[![Issues](https://img.shields.io/github/issues/ragini19854-prog/new_madara_music?color=FF4757&style=for-the-badge&logo=github&labelColor=000000)](https://github.com/ragini19854-prog/new_madara_music/issues)
+<p align="center">
+  <a href="https://t.me/YourSupportChat"><img src="https://img.shields.io/badge/Support-Telegram-2CA5E0?style=flat-square&logo=telegram"/></a>
+  <a href="https://t.me/YourChannel"><img src="https://img.shields.io/badge/Channel-Updates-2CA5E0?style=flat-square&logo=telegram"/></a>
+  <img src="https://img.shields.io/github/stars/ragini19854-prog/new_madara_music?style=flat-square&color=yellow"/>
+  <img src="https://img.shields.io/github/forks/ragini19854-prog/new_madara_music?style=flat-square&color=blue"/>
+</p>
 
 </div>
 
 ---
 
-<div align="center">
+## ✨ Features
 
-## 🌟 FEATURE SHOWCASE
+<table>
+<tr>
+<td width="50%">
 
+### 🎵 Music Streaming
+- High-quality audio & video streaming
+- YouTube, Spotify, Apple Music, SoundCloud
+- Queue management with shuffle & loop
+- Speed control & volume slider
+- Spotify-style animated thumbnails
+
+</td>
+<td width="50%">
+
+### 🎮 Entertainment
+- **ChatFight** — Word, emoji & flag games with leaderboard
+- **Cricket** — Live score updates
+- **Couples** — Daily couple pairing game
+- **AFK** — Auto away-from-keyboard status
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 💳 Payments & Crypto
+- **UPI Pay** — Generate QR codes for any UPI ID
+- **TON Price** — Live TON coin prices (USD & INR)
+- **USDT** — Tether live prices
+- **TON Balance** — Check any wallet balance
+
+</td>
+<td width="50%">
+
+### 🔐 Tools & Utilities
+- **GenString** — Pyrogram v1/v2 & Telethon session generator
+- **GitHub Manager** — Full GitHub integration with token auth
+- **Welcome Cards** — Custom animated welcome images
+- **Thumbnails** — Spotify-style music thumbnails
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 👑 Admin & Moderation
+- Auth user system
+- Ban, mute, unban all
+- Chat blacklist / whitelist
+- Broadcast to all chats
+- Auto-leaving assistant
+
+</td>
+<td width="50%">
+
+### 🌐 Developer Tools
+- GitHub repo info, commits, issues, star/fork
+- WHOIS domain lookup
+- Instagram downloader
+- GPT integration
+- Reverse image search
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🚀 Deploy
+
+### Prerequisites
+- Python 3.11+
+- MongoDB Atlas (free tier works)
+- Telegram API credentials
+
+### Environment Variables
+
+| Variable | Required | Description |
+|---|---|---|
+| `API_ID` | ✅ | From [my.telegram.org](https://my.telegram.org) |
+| `API_HASH` | ✅ | From [my.telegram.org](https://my.telegram.org) |
+| `BOT_TOKEN` | ✅ | From [@BotFather](https://t.me/BotFather) |
+| `MONGO_DB_URI` | ✅ | MongoDB connection string |
+| `OWNER_ID` | ✅ | Your Telegram user ID |
+| `STRING_SESSION` | ✅ | Pyrogram v2 string session |
+| `LOGGER_ID` | ⚡ | Log channel/group ID |
+| `OWNER_USERNAME` | ⚡ | Your Telegram username |
+| `BOT_USERNAME` | ⚡ | Bot's username |
+| `SUPPORT_CHAT` | ⚡ | Support group URL |
+| `SUPPORT_CHANNEL` | ⚡ | Channel URL |
+| `SPOTIFY_CLIENT_ID` | 🔵 | Spotify developer app ID |
+| `SPOTIFY_CLIENT_SECRET` | 🔵 | Spotify developer secret |
+| `STRING_SESSION2–7` | 🔵 | Additional assistant sessions |
+
+> ✅ Required &nbsp; ⚡ Recommended &nbsp; 🔵 Optional
+
+### Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/ragini19854-prog/new_madara_music
+cd new_madara_music
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Set environment variables (copy .env.example)
+cp .env.example .env
+# Edit .env with your values
+
+# Start the bot
+python3 -m MADARAMUSIC
 ```
-╔══════════════════════════════════════════════════════════════════╗
-║  ░░░░░░░  MADARA MUSIC  —  3D FEATURE GRID  ░░░░░░░░░░░░░░░░░  ║
-╠══════════╦═══════════════════╦═══════════════════╦══════════════╣
-║  🎵 Play ║  🎬 Video Stream  ║  🔴 Live Radio    ║  🔁 Loop     ║
-╠══════════╬═══════════════════╬═══════════════════╬══════════════╣
-║  🤖 GPT  ║  🏏 Cricket Live  ║  📸 Instagram DL  ║  🌍 Domain   ║
-╠══════════╬═══════════════════╬═══════════════════╬══════════════╣
-║  🎮 Fun  ║  🙋 My Info       ║  🔍 WHOIS Lookup  ║  🔄 Reverse  ║
-╠══════════╬═══════════════════╬═══════════════════╬══════════════╣
-║  🔧 Proxy║  📄 Img→PDF       ║  🎙️ VC Tools       ║  ▶️ AutoPlay ║
-╚══════════╩═══════════════════╩═══════════════════╩══════════════╝
-```
-
-</div>
 
 ---
 
-<div align="center">
+## 📋 Commands
 
-## ⚡ ONE-CLICK DEPLOY
-
-| Platform | Deploy |
-|:---:|:---:|
-| 🚀 **Replit** | [![Run on Replit](https://replit.com/badge/github/ragini19854-prog/new_madara_music)](https://replit.com/github/ragini19854-prog/new_madara_music) |
-| 🟣 **Heroku** | [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ragini19854-prog/new_madara_music) |
-| 🐳 **Docker** | `docker run -d --env-file .env ghcr.io/madara-music/bot:latest` |
-| 🖥️ **VPS** | `git clone https://github.com/ragini19854-prog/new_madara_music && pip install -r requirements.txt && python -m MADARAMUSIC` |
-
-</div>
-
----
-
-## 🎵 MUSIC COMMANDS
-
-<div align="center">
-
-| Command | Description | Who |
-|:---|:---|:---:|
-| `/play [song/link]` | Stream audio in voice chat | All |
-| `/vplay [song/link]` | Stream video in voice chat | All |
-| `/live [url]` | Play live stream / radio | All |
-| `/cplay [link]` | Play in channel voice chat | Admins |
-| `/queue` | View current track queue | All |
-| `/skip` | Skip to next track | Admins |
-| `/pause` / `/resume` | Pause or resume playback | Admins |
-| `/stop` | Stop and clear queue | Admins |
-| `/seek [sec]` | Jump to position | Admins |
-| `/loop` | Toggle loop mode | Admins |
-| `/shuffle` | Shuffle the queue | Admins |
-| `/speed [0.5–4.0]` | Change playback speed | Admins |
-| `/autoplay on/off` | Auto-queue next song | Admins |
-
-</div>
-
----
-
-## 🛡️ ADMIN COMMANDS
-
-<div align="center">
-
+### 🎵 Music
 | Command | Description |
-|:---|:---|
-| `/auth` / `/unauth` | Authorize users to use bot controls |
-| `/ban` / `/unban` | Ban/unban users from bot |
-| `/banall` / `/unbanall` | Ban or unban all members at once |
-| `/tagall` / `/gmtag` / `/hitag` | Tag all / Good morning / Hi tag |
-| `/purge` | Delete messages in bulk |
-| `/promote` / `/unmute` | Promote or unmute a user |
-| `/unpinall` | Unpin all pinned messages |
-| `/shayari` | Send a random shayari |
+|---|---|
+| `/play [song]` | Stream a song in voice chat |
+| `/vplay [song]` | Stream a video |
+| `/pause` / `/resume` | Pause or resume playback |
+| `/skip` | Skip to next track |
+| `/stop` | Stop and clear queue |
+| `/queue` | View current queue |
+| `/shuffle` | Shuffle the queue |
+| `/loop` | Toggle loop mode |
+| `/speed` | Adjust playback speed |
 
-</div>
-
----
-
-## ✨ PAGE 3 — PREMIUM TOOLS
-
-<div align="center">
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│   💎  PREMIUM TOOLS  •  Powered by MADARA MUSIC Engine  💎      │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-| Command | Description | Category |
-|:---|:---|:---:|
-| `/gpt [query]` | Ask GPT AI anything | 🤖 AI |
-| `/fun` | Random fun commands & games | 🎮 Fun |
-| `/cricket` | Live cricket scores & match info | 🏏 Sports |
-| `/myinfo` | Your full Telegram profile card | 🙋 Info |
-| `/whois [name]` | WHOIS lookup for domain/user | 🔍 Lookup |
-| `/reverse` | Reverse any text or sticker | 🔄 Tools |
-| `/instadl [url]` | Download Instagram reel/post | 📸 Download |
-| `/domain [name]` | Domain availability & WHOIS | 🌍 Network |
-| `/img2pdf` | Batch convert images to PDF | 📄 Convert |
-| `/proxy [host:port]` | Check if proxy is alive | 🔧 Network |
-| `/vctools` | VC management toolkit | 🎙️ Voice |
-| `/autoplay` | Auto-play next track from queue | ▶️ Play |
-| `/getid` | Get user/group/channel ID | 🆔 Info |
-| `/grab [url]` | Grab & download media from URL | 📥 Media |
-| `/fakeinfo` | Generate fake random identity | 🎭 Extra |
-| `/goodnight` | Send good night greeting | 🌙 Extra |
-| `/ip [address]` | IP address geolocation lookup | 🌐 Network |
-| `/video [query]` | Search & download a video | 🎬 Media |
-| `/dork [query]` | Google dork search | 🔍 Search |
-| `/truth` / `/dare` | Truth or dare game | 🎲 Games |
-| `/nexio` | Nexio sudo tools | ⚙️ Sudo |
-| `/post` | Owner post to all chats | 📢 Owner |
-
-</div>
-
----
-
-## 🔧 UTILITY & MISC COMMANDS
-
-<div align="center">
-
+### 💳 UPI & Payments
 | Command | Description |
-|:---|:---|
-| `/ping` | Check bot speed & latency |
-| `/stats` | Full bot usage statistics |
-| `/broadcast` | Broadcast to all users (Owner) |
-| `/info` | User/chat information card |
-| `/movie [name]` | Fetch movie details |
-| `/notes` | Save & retrieve group notes |
-| `/nightmode` | Auto night-mode toggle |
-| `/tts [text]` | Text to speech conversion |
-| `/translate` | Auto-translate text |
-| `/weather [city]` | Live weather info |
-| `/sticker` | Create or steal a sticker |
-| `/qr [text]` | Generate QR code |
-| `/carbon [code]` | Code → carbon.now.sh image |
-| `/song [name]` | Download song from YouTube |
-| `/zip` / `/unzip` | Compress or extract files |
-| `/upscale` | Upscale image resolution |
+|---|---|
+| `/setupi [upi@bank]` | Save your UPI ID |
+| `/gen [amount]` | Generate a QR code (expires in 10 min) |
 
-</div>
+### ⚡ Crypto
+| Command | Description |
+|---|---|
+| `/ton` | Live TON price |
+| `/usdt` | Live USDT price |
+| `/balance [address]` | Check TON wallet balance |
 
----
+### 🔐 Session Generator
+| Command | Description |
+|---|---|
+| `/genstring` | Generate Pyrogram/Telethon session (PM only) |
 
-## 🌐 PLATFORM SUPPORT
+### 🌐 GitHub
+| Command | Description |
+|---|---|
+| `/gittoken [token]` | Save your GitHub token |
+| `/gitinfo [user]` | GitHub profile info |
+| `/gitrepo [user/repo]` | Repository info |
+| `/zrepo [user/repo]` | Download repo as ZIP |
+| `/zpush [user/repo]` | Push file to repo |
+| `/gitissues [user/repo]` | List open issues |
+| `/gitcommits [user/repo]` | Recent commits |
+| `/gitstar [user/repo]` | Star a repository |
+| `/gitfork [user/repo]` | Fork a repository |
+| `/gitbranch [user/repo]` | List branches |
 
-<div align="center">
-
-| Platform | Audio | Video | Live |
-|:---:|:---:|:---:|:---:|
-| 🎵 YouTube | ✅ | ✅ | ✅ |
-| 🎧 Spotify | ✅ | — | — |
-| ☁️ SoundCloud | ✅ | — | — |
-| 🍎 Apple Music | ✅ | — | — |
-| 🎼 Resso | ✅ | — | — |
-| 📁 Telegram Files | ✅ | ✅ | — |
-
-</div>
-
----
-
-## ⚙️ SETUP
-
-### 🔐 Required Secrets
-
-| Variable | Description |
-|:---|:---|
-| `API_ID` | Telegram API ID — [my.telegram.org](https://my.telegram.org) |
-| `API_HASH` | Telegram API Hash — [my.telegram.org](https://my.telegram.org) |
-| `BOT_TOKEN` | Bot token — [@BotFather](https://t.me/BotFather) |
-| `MONGO_DB_URI` | MongoDB Atlas URI |
-| `OWNER_ID` | Your Telegram numeric user ID |
-| `LOGGER_ID` | Log group/channel chat ID |
-| `STRING_SESSION` | Pyrogram string session (assistant account) |
-
-### 🔧 Optional Secrets
-
-| Variable | Default | Description |
-|:---|:---:|:---|
-| `BOT_NAME` | `MADARA MUSIC` | Display name |
-| `SPOTIFY_CLIENT_ID` | — | Spotify API client ID |
-| `SPOTIFY_CLIENT_SECRET` | — | Spotify API secret |
-| `STRING_SESSION2`–`7` | — | Extra assistant accounts |
+### 🎮 Games
+| Command | Description |
+|---|---|
+| `/chatfight` | Start a word/emoji/flag game |
+| `/gametop` | View game leaderboard |
 
 ---
 
-## 📁 PROJECT STRUCTURE
+## 🏗️ Project Structure
 
 ```
-new_madara_music/
-│
-├── MADARAMUSIC/
-│   ├── core/                  ← Bot engine · Call manager · MongoDB · Userbot
-│   ├── platforms/             ← YouTube · Spotify · SoundCloud · Apple · Resso
-│   ├── plugins/
-│   │   ├── admins/            ← ban · banall · seek · loop · tagall · purge …
-│   │   ├── bot/               ← start · help · settings · grab · ytsearch …
-│   │   ├── extra/             ← domain · goodnight · fakeinfo · ip · video …
-│   │   ├── misc/              ← notes · nightmode · tts · truth_dare · movie …
-│   │   ├── play/              ← play · channel · live · autoplay · playmode …
-│   │   ├── sudo/              ← gban · maintenance · nexio · post · restart …
-│   │   └── tools/             ← gpt · fun · cricket · vctools · whois · proxy …
-│   └── utils/
-│       ├── inline/            ← help(p1/p2/p3) · play · settings · stats …
-│       ├── emojis.py          ← 55+ premium emoji IDs for all buttons
-│       ├── thumbnails.py      ← Now-playing card generator
-│       └── database.py        ← MongoDB helpers
-│
-├── strings/langs/             ← 🇺🇸 EN  🇮🇳 HI  🇸🇦 AR  🇮🇳 PA
-├── config.py
-├── requirements.txt
-├── Dockerfile
-└── Procfile
+MADARAMUSIC/
+├── core/           # Bot core (client, mongo, git)
+├── platforms/      # Music platform handlers (YouTube, Spotify, etc.)
+├── plugins/
+│   ├── admins/     # Admin commands
+│   ├── bot/        # Core bot handlers (start, help, settings)
+│   ├── extra/      # Extra tools
+│   ├── misc/       # Miscellaneous (filters, notes)
+│   ├── sudo/       # Sudo/owner commands
+│   └── tools/      # User tools (UPI, Crypto, ChatFight, GitHub...)
+├── utils/
+│   ├── database/   # MongoDB helpers
+│   ├── decorators/ # Language & auth decorators
+│   ├── inline/     # Inline keyboard builders
+│   ├── emojis.py   # Premium emoji IDs
+│   └── thumbnails.py # Spotify-style thumbnail generator
+├── assets/         # Images (backgrounds, welcome card, etc.)
+└── __main__.py     # Entry point
+strings/
+├── langs/          # Language files (en.yml, etc.)
+└── helpers.py      # Help text strings
+```
+
+---
+
+## 🛡️ License
+
+```
+Copyright © 2024 MADARA MUSIC
+Built with ❤️ for music lovers everywhere.
+Open for educational and non-commercial use only.
 ```
 
 ---
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=120&section=footer&animation=twinkling" width="100%"/>
+**Made with ❤️ | Star ⭐ this repo if you like it!**
 
-**🎵 MADARA MUSIC — Built with ❤️ for music lovers everywhere**
-
-[![Telegram](https://img.shields.io/badge/Support-Telegram-2CA5E0?style=for-the-badge&logo=telegram)](https://t.me/)
-[![GitHub](https://img.shields.io/badge/Source-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/ragini19854-prog/new_madara_music)
-
-*No lag · No ads · No bugs · 24/7 Online*
+[![Telegram](https://img.shields.io/badge/Join-Telegram-2CA5E0?style=for-the-badge&logo=telegram)](https://t.me/YourSupportChat)
 
 </div>

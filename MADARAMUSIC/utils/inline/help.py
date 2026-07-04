@@ -1,11 +1,19 @@
 from typing import Union
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from MADARAMUSIC import app
+from MADARAMUSIC.utils.emojis import (
+    E_SPARK, E_CROWN, E_DIAMOND, E_THUNDER, E_MUSIC, E_GLOBE,
+    E_GEAR, E_LOCK, E_HEART, E_STAR, E_FIRE, E_MIC,
+)
+
+# ── Premium emoji helper ─────────────────────────────────────────
+def _e(eid, fb):
+    return f'<emoji id={eid}>{fb}</emoji>'
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #  NOTE: ButtonStyle / icon_custom_emoji_id are NOT available
-#  in pyrofork 2.3.69 — plain InlineKeyboardButton used here.
+#  in pyrofork 2.3.69 — plain InlineKeyboardButton only.
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
@@ -55,9 +63,9 @@ def help_pannel_extra(_, page: int = 2):
 
 
 def help_pannel_premium(_):
-    """Page 3 — ✨ Premium Features: ChatFight · GenString · GitHub · Games."""
-    def _btn(key, cb):
-        return InlineKeyboardButton(text=_[key], callback_data=cb)
+    """Page 3 — ✨ Premium Features."""
+    def _btn(label, cb):
+        return InlineKeyboardButton(text=label, callback_data=cb)
 
     nav = [
         InlineKeyboardButton(text=_["BACK_PAGE"],   callback_data="help_page_2"),
@@ -66,13 +74,34 @@ def help_pannel_premium(_):
 
     return InlineKeyboardMarkup([
         # Row 1: ChatFight · GenString · GitHub
-        [_btn("H_B_37","help_callback hb37"), _btn("H_B_38","help_callback hb38"), _btn("H_B_40","help_callback hb40")],
-        # Row 2: GameTop · GPT · Cricket
-        [_btn("H_B_39","help_callback hb39"), _btn("H_B_25","help_callback hb25"), _btn("H_B_27","help_callback hb27")],
-        # Row 3: MyInfo · WHOIS · Reverse
-        [_btn("H_B_28","help_callback hb28"), _btn("H_B_29","help_callback hb29"), _btn("H_B_30","help_callback hb30")],
-        # Row 4: Instagram · VC Tools · AutoPlay
-        [_btn("H_B_31","help_callback hb31"), _btn("H_B_35","help_callback hb35"), _btn("H_B_36","help_callback hb36")],
+        [
+            _btn(f'{_e(E_FIRE,"🔥")} ᴄʜᴀᴛꜰɪɢʜᴛ',   "help_callback hb37"),
+            _btn(f'{_e(E_LOCK,"🔒")} ɢᴇɴsᴛʀɪɴɢ',   "help_callback hb38"),
+            _btn(f'{_e(E_GLOBE,"🌐")} ɢɪᴛʜᴜʙ',     "help_callback hb40"),
+        ],
+        # Row 2: UPI Pay · Crypto · GameTop
+        [
+            _btn(f'{_e(E_DIAMOND,"💎")} ᴜᴩɪ ᴩᴀʏ',   "help_callback hb41"),
+            _btn(f'{_e(E_THUNDER,"⚡")} ᴄʀʏᴩᴛᴏ',    "help_callback hb42"),
+            _btn(f'{_e(E_CROWN,"👑")} ɢᴀᴍᴇᴛᴏᴩ',    "help_callback hb39"),
+        ],
+        # Row 3: GPT · Cricket · MyInfo
+        [
+            _btn(f'{_e(E_SPARK,"✨")} ɢᴘᴛ',         "help_callback hb25"),
+            _btn(f'{_e(E_FIRE,"🏏")} ᴄʀɪᴄᴋᴇᴛ',     "help_callback hb27"),
+            _btn(f'{_e(E_STAR,"⭐")} ᴍʏɪɴꜰᴏ',       "help_callback hb28"),
+        ],
+        # Row 4: WHOIS · Reverse · Instagram
+        [
+            _btn(f'{_e(E_GEAR,"⚙️")} ᴡʜᴏɪs',        "help_callback hb29"),
+            _btn(f'{_e(E_MUSIC,"🔄")} ʀᴇᴠᴇʀsᴇ',     "help_callback hb30"),
+            _btn(f'{_e(E_HEART,"❤️")} ɪɴsᴛᴀ',       "help_callback hb31"),
+        ],
+        # Row 5: VC Tools · AutoPlay
+        [
+            _btn(f'{_e(E_MIC,"🎤")} ᴠᴄ ᴛᴏᴏʟs',     "help_callback hb35"),
+            _btn(f'{_e(E_MUSIC,"🎵")} ᴀᴜᴛᴏᴩʟᴀʏ',   "help_callback hb36"),
+        ],
         nav,
     ])
 
