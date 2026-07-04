@@ -1,71 +1,57 @@
 # MADARA MUSIC Bot
 
-A fully-featured Telegram music bot built with Python, Pyrogram, and PyTgCalls. Plays music in Telegram group voice chats from YouTube, Spotify, SoundCloud, Apple Music, Resso, and direct Telegram files.
+A feature-rich Telegram music & entertainment bot built with Python, Pyrogram, py-tgcalls, and MongoDB.
 
-## Features
+## Stack
+- **Python 3.11**
+- **Pyrogram** (pyrofork fork) — Telegram client
+- **py-tgcalls** — voice/video call streaming
+- **MongoDB Atlas** — database (via Motor async driver)
+- **yt-dlp / spotipy** — music platform integrations
 
-- 🎵 Play music in Telegram voice chats
-- 📱 Supports YouTube, Spotify, SoundCloud, Apple Music, Resso, Telegram files
-- 🎛️ Audio/video streaming with controls (pause, resume, skip, seek, loop, speed)
-- 👥 Multi-assistant support (up to 7 string sessions)
-- 🌐 Multi-language support (English, Hindi, Arabic, Punjabi)
-- 🛡️ Admin tools, ban/unban, group management
-- 🎨 Thumbnail generation for now-playing cards
-- 🤖 Many extra tools (weather, QR, stickers, translator, etc.)
-
-## Project Structure
+## How to run
 
 ```
-MADARAMUSIC/           # Main bot package
-├── core/              # Bot, call engine, MongoDB, userbot
-├── platforms/         # YouTube, Spotify, SoundCloud, Apple, Resso, Telegram APIs
-├── plugins/           # All command handlers
-│   ├── admins/        # Admin controls (pause, skip, stop, etc.)
-│   ├── bot/           # Bot commands (start, help, settings)
-│   ├── extra/         # Extra features
-│   ├── misc/          # Misc handlers
-│   ├── play/          # Play commands
-│   └── tools/         # Utility tools
-├── utils/             # Helpers, database, thumbnails, formatters
-└── mongo/             # MongoDB collection helpers
-config.py              # All configuration (loaded from env vars)
-strings/               # Multi-language string files
-requirements.txt       # Python dependencies
+pip install -r requirements.txt -q && python3 -m MADARAMUSIC
 ```
 
-## Setup
-
-### Required Environment Variables
-
-Set these in the Replit Secrets panel:
+## Required environment variables
 
 | Variable | Description |
 |---|---|
-| `API_ID` | Telegram API ID from my.telegram.org |
-| `API_HASH` | Telegram API Hash from my.telegram.org |
+| `API_ID` | Telegram API ID from [my.telegram.org](https://my.telegram.org) |
+| `API_HASH` | Telegram API Hash |
 | `BOT_TOKEN` | Bot token from @BotFather |
-| `MONGO_DB_URI` | MongoDB connection URI |
-| `OWNER_ID` | Your Telegram user ID |
-| `LOGGER_ID` | Log group/channel ID (bot must be admin there) |
-| `STRING_SESSION` | Pyrogram string session (assistant account) |
+| `MONGO_DB_URI` | MongoDB Atlas connection string |
+| `OWNER_ID` | Your Telegram user ID (integer) |
+| `LOGGER_ID` | Telegram group/channel ID for bot logs (bot must be admin) |
+| `STRING_SESSION` | Pyrogram session string for the assistant userbot |
 
-### Optional Environment Variables
+## Optional environment variables
 
-| Variable | Default | Description |
-|---|---|---|
-| `BOT_NAME` | `MADARA MUSIC` | Bot display name |
-| `OWNER_USERNAME` | - | Your Telegram username |
-| `SUPPORT_CHANNEL` | - | Support channel URL |
-| `SUPPORT_CHAT` | - | Support chat URL |
-| `SPOTIFY_CLIENT_ID` | - | Spotify API client ID |
-| `SPOTIFY_CLIENT_SECRET` | - | Spotify API client secret |
-| `STRING_SESSION2-7` | - | Extra assistant sessions |
+| Variable | Description |
+|---|---|
+| `STRING_SESSION2`–`STRING_SESSION7` | Extra assistant session strings |
+| `SPOTIFY_CLIENT_ID` / `SPOTIFY_CLIENT_SECRET` | Spotify API credentials |
+| `HEROKU_API_KEY` / `HEROKU_APP_NAME` | Heroku integration |
+| `GIT_TOKEN` | GitHub token |
+| `OWNER_USERNAME` | Your Telegram username |
+| `BOT_USERNAME` | Bot username |
+| `LOGGER_ID` | Log group/channel ID |
+| `DURATION_LIMIT` | Max stream duration in minutes (default: 17000) |
 
-### Running the Bot
+## Project structure
 
-1. Fill all required secrets in the Replit Secrets panel
-2. Click **Run** (Start MADARA MUSIC Bot workflow)
+```
+MADARAMUSIC/
+├── core/           # Bot core (client, mongo, userbot, git)
+├── platforms/      # Music platform handlers (YouTube, Spotify, etc.)
+├── plugins/        # Command handlers (admins, bot, extra, misc, sudo, tools)
+├── utils/          # Database helpers, decorators, inline keyboards, thumbnails
+├── assets/         # Images and fonts
+└── __main__.py     # Entry point
+config.py           # Config loaded from environment variables
+strings/            # Language files (YAML)
+```
 
-## User Preferences
-
-- Bot branding: **MADARA MUSIC** (renamed from original STRANGER MUSIC / SHUKLAMUSIC)
+## User preferences
