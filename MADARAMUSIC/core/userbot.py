@@ -57,6 +57,11 @@ class Userbot(Client):
                 f"Assistant {name} failed to start ({type(e).__name__}: {e}). "
                 "Update STRING_SESSION env var with a fresh Pyrogram session string."
             )
+            # Clean up to avoid unclosed-session resource leaks
+            try:
+                await client.stop()
+            except Exception:
+                pass
             return
         try:
             await client.join_chat("ITSZSHUKLA")

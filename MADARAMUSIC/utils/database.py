@@ -73,7 +73,10 @@ async def set_assistant_new(chat_id, number):
 
 async def set_assistant(chat_id):
     from MADARAMUSIC.core.userbot import assistants
+    from MADARAMUSIC.utils.exceptions import AssistantErr
 
+    if not assistants:
+        raise AssistantErr("No assistant session is active. Please set a valid STRING_SESSION.")
     ran_assistant = random.choice(assistants)
     assistantdict[chat_id] = ran_assistant
     await assdb.update_one(
@@ -114,7 +117,10 @@ async def get_assistant(chat_id: int) -> str:
 
 async def set_calls_assistant(chat_id):
     from MADARAMUSIC.core.userbot import assistants
+    from MADARAMUSIC.utils.exceptions import AssistantErr
 
+    if not assistants:
+        raise AssistantErr("No assistant session is active. Please set a valid STRING_SESSION.")
     ran_assistant = random.choice(assistants)
     assistantdict[chat_id] = ran_assistant
     await assdb.update_one(

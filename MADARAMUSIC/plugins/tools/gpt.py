@@ -17,11 +17,11 @@ _kb = mongodb.chatbot_knowledge
 _SEED = [
     {
         "keywords": ["hello", "hi", "hey", "helo", "hii", "heyy", "howdy"],
-        "answer": "👋 ʜᴇʟʟᴏ! ɪ'ᴍ *MADARA MUSIC* ʙᴏᴛ. ʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ ᴛᴏᴅᴀʏ? 🎵",
+        "answer": "👋 ʜᴇʟʟᴏ! ɪ'ᴍ <b>MADARA MUSIC</b> ʙᴏᴛ. ʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ ᴛᴏᴅᴀʏ? 🎵",
     },
     {
         "keywords": ["who", "are", "you", "bot", "name", "introduce", "yourself"],
-        "answer": "🤖 ɪ ᴀᴍ *MADARA MUSIC* — ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ᴍᴜsɪᴄ ʙᴏᴛ!\n\n🎵 ɪ ᴄᴀɴ ᴘʟᴀʏ ᴍᴜsɪᴄ, ᴍᴀɴᴀɢᴇ ǫᴜᴇᴜᴇs, ᴀɴᴅ ᴅᴏ ᴍᴜᴄʜ ᴍᴏʀᴇ!\n\n⚡ <tg-emoji emoji-id=\"5213095308040356426\">P</tg-emoji><tg-emoji emoji-id=\"5212943085809454431\">O</tg-emoji><tg-emoji emoji-id=\"5213148466850580086\">W</tg-emoji><tg-emoji emoji-id=\"5213337333742454261\">E</tg-emoji><tg-emoji emoji-id=\"5211009581727107238\">R</tg-emoji><tg-emoji emoji-id=\"5213337333742454261\">E</tg-emoji><tg-emoji emoji-id=\"5211094355791594395\">D</tg-emoji> <tg-emoji emoji-id=\"5213400521301313365\">B</tg-emoji><tg-emoji emoji-id=\"5210932667452768696\">Y</tg-emoji> <tg-emoji emoji-id=\"5210890482283988215\">M</tg-emoji><tg-emoji emoji-id=\"5210820276748566172\">A</tg-emoji><tg-emoji emoji-id=\"5211094355791594395\">D</tg-emoji><tg-emoji emoji-id=\"5210820276748566172\">A</tg-emoji><tg-emoji emoji-id=\"5211009581727107238\">R</tg-emoji><tg-emoji emoji-id=\"5210820276748566172\">A</tg-emoji>",
+        "answer": "🤖 ɪ ᴀᴍ <b>MADARA MUSIC</b> — ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ᴍᴜsɪᴄ ʙᴏᴛ!\n\n🎵 ɪ ᴄᴀɴ ᴘʟᴀʏ ᴍᴜsɪᴄ, ᴍᴀɴᴀɢᴇ ǫᴜᴇᴜᴇs, ᴀɴᴅ ᴅᴏ ᴍᴜᴄʜ ᴍᴏʀᴇ!\n\n⚡ <tg-emoji emoji-id=\"5213095308040356426\">P</tg-emoji><tg-emoji emoji-id=\"5212943085809454431\">O</tg-emoji><tg-emoji emoji-id=\"5213148466850580086\">W</tg-emoji><tg-emoji emoji-id=\"5213337333742454261\">E</tg-emoji><tg-emoji emoji-id=\"5211009581727107238\">R</tg-emoji><tg-emoji emoji-id=\"5213337333742454261\">E</tg-emoji><tg-emoji emoji-id=\"5211094355791594395\">D</tg-emoji> <tg-emoji emoji-id=\"5213400521301313365\">B</tg-emoji><tg-emoji emoji-id=\"5210932667452768696\">Y</tg-emoji> <tg-emoji emoji-id=\"5210890482283988215\">M</tg-emoji><tg-emoji emoji-id=\"5210820276748566172\">A</tg-emoji><tg-emoji emoji-id=\"5211094355791594395\">D</tg-emoji><tg-emoji emoji-id=\"5210820276748566172\">A</tg-emoji><tg-emoji emoji-id=\"5211009581727107238\">R</tg-emoji><tg-emoji emoji-id=\"5210820276748566172\">A</tg-emoji>",
     },
     {
         "keywords": ["owner", "creator", "developer", "dev", "made", "who made"],
@@ -29,103 +29,103 @@ _SEED = [
     },
     {
         "keywords": ["play", "music", "song", "stream", "how to play"],
-        "answer": "🎵 ᴛᴏ ᴘʟᴀʏ ᴍᴜsɪᴄ, ᴜsᴇ:\n\n`/play [song name or YouTube link]`\n\n✅ ɪ sᴜᴘᴘᴏʀᴛ YouTube, Spotify, Apple Music & SoundCloud!\n\n⚡ <tg-emoji emoji-id=\"5213095308040356426\">P</tg-emoji><tg-emoji emoji-id=\"5212943085809454431\">O</tg-emoji><tg-emoji emoji-id=\"5213148466850580086\">W</tg-emoji><tg-emoji emoji-id=\"5213337333742454261\">E</tg-emoji><tg-emoji emoji-id=\"5211009581727107238\">R</tg-emoji><tg-emoji emoji-id=\"5213337333742454261\">E</tg-emoji><tg-emoji emoji-id=\"5211094355791594395\">D</tg-emoji> <tg-emoji emoji-id=\"5213400521301313365\">B</tg-emoji><tg-emoji emoji-id=\"5210932667452768696\">Y</tg-emoji> <tg-emoji emoji-id=\"5210890482283988215\">M</tg-emoji><tg-emoji emoji-id=\"5210820276748566172\">A</tg-emoji><tg-emoji emoji-id=\"5211094355791594395\">D</tg-emoji><tg-emoji emoji-id=\"5210820276748566172\">A</tg-emoji><tg-emoji emoji-id=\"5211009581727107238\">R</tg-emoji><tg-emoji emoji-id=\"5210820276748566172\">A</tg-emoji>",
+        "answer": "🎵 ᴛᴏ ᴘʟᴀʏ ᴍᴜsɪᴄ, ᴜsᴇ:\n\n<code>/play [song name or YouTube link]</code>\n\n✅ ɪ sᴜᴘᴘᴏʀᴛ YouTube, Spotify, Apple Music & SoundCloud!\n\n⚡ <tg-emoji emoji-id=\"5213095308040356426\">P</tg-emoji><tg-emoji emoji-id=\"5212943085809454431\">O</tg-emoji><tg-emoji emoji-id=\"5213148466850580086\">W</tg-emoji><tg-emoji emoji-id=\"5213337333742454261\">E</tg-emoji><tg-emoji emoji-id=\"5211009581727107238\">R</tg-emoji><tg-emoji emoji-id=\"5213337333742454261\">E</tg-emoji><tg-emoji emoji-id=\"5211094355791594395\">D</tg-emoji> <tg-emoji emoji-id=\"5213400521301313365\">B</tg-emoji><tg-emoji emoji-id=\"5210932667452768696\">Y</tg-emoji> <tg-emoji emoji-id=\"5210890482283988215\">M</tg-emoji><tg-emoji emoji-id=\"5210820276748566172\">A</tg-emoji><tg-emoji emoji-id=\"5211094355791594395\">D</tg-emoji><tg-emoji emoji-id=\"5210820276748566172\">A</tg-emoji><tg-emoji emoji-id=\"5211009581727107238\">R</tg-emoji><tg-emoji emoji-id=\"5210820276748566172\">A</tg-emoji>",
     },
     {
         "keywords": ["skip", "next", "change", "track"],
-        "answer": "⏭️ ᴛᴏ sᴋɪᴘ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ sᴏɴɢ:\n\n`/skip`\n\n✅ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ ᴛʜɪs ɪɴ ɢʀᴏᴜᴘs.",
+        "answer": "⏭️ ᴛᴏ sᴋɪᴘ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ sᴏɴɢ:\n\n<code>/skip</code>\n\n✅ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ ᴛʜɪs ɪɴ ɢʀᴏᴜᴘs.",
     },
     {
         "keywords": ["stop", "end", "leave", "quit"],
-        "answer": "⏹️ ᴛᴏ sᴛᴏᴘ sᴛʀᴇᴀᴍɪɴɢ:\n\n`/stop` or `/end`\n\n✅ ᴛʜɪs ᴡɪʟʟ ᴄʟᴇᴀʀ ᴛʜᴇ ǫᴜᴇᴜᴇ ᴀɴᴅ ʟᴇᴀᴠᴇ ᴛʜᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ.",
+        "answer": "⏹️ ᴛᴏ sᴛᴏᴘ sᴛʀᴇᴀᴍɪɴɢ:\n\n<code>/stop</code> or <code>/end</code>\n\n✅ ᴛʜɪs ᴡɪʟʟ ᴄʟᴇᴀʀ ᴛʜᴇ ǫᴜᴇᴜᴇ ᴀɴᴅ ʟᴇᴀᴠᴇ ᴛʜᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ.",
     },
     {
         "keywords": ["pause", "resume"],
-        "answer": "⏸️ Pause/Resume ᴄᴏᴍᴍᴀɴᴅs:\n\n`/pause` — ᴘᴀᴜsᴇ ᴛʜᴇ sᴛʀᴇᴀᴍ\n`/resume` — ʀᴇsᴜᴍᴇ ᴛʜᴇ sᴛʀᴇᴀᴍ",
+        "answer": "⏸️ Pause/Resume ᴄᴏᴍᴍᴀɴᴅs:\n\n<code>/pause</code> — ᴘᴀᴜsᴇ ᴛʜᴇ sᴛʀᴇᴀᴍ\n<code>/resume</code> — ʀᴇsᴜᴍᴇ ᴛʜᴇ sᴛʀᴇᴀᴍ",
     },
     {
         "keywords": ["queue", "playlist", "list", "songs", "queued"],
-        "answer": "📋 ᴛᴏ ᴄʜᴇᴄᴋ ᴛʜᴇ ǫᴜᴇᴜᴇ:\n\n`/queue` — sʜᴏᴡ ᴄᴜʀʀᴇɴᴛ ǫᴜᴇᴜᴇ\n\n✅ Yᴏᴜ ᴄᴀɴ ᴀᴅᴅ ᴍᴜʟᴛɪᴘʟᴇ sᴏɴɢs ᴀɴᴅ ᴛʜᴇʏ ᴡɪʟʟ ᴘʟᴀʏ ɪɴ ᴏʀᴅᴇʀ.",
+        "answer": "📋 ᴛᴏ ᴄʜᴇᴄᴋ ᴛʜᴇ ǫᴜᴇᴜᴇ:\n\n<code>/queue</code> — sʜᴏᴡ ᴄᴜʀʀᴇɴᴛ ǫᴜᴇᴜᴇ\n\n✅ Yᴏᴜ ᴄᴀɴ ᴀᴅᴅ ᴍᴜʟᴛɪᴘʟᴇ sᴏɴɢs ᴀɴᴅ ᴛʜᴇʏ ᴡɪʟʟ ᴘʟᴀʏ ɪɴ ᴏʀᴅᴇʀ.",
     },
     {
         "keywords": ["ping", "speed", "fast", "slow", "response"],
-        "answer": "⚡ ᴜsᴇ `/ping` ᴛᴏ ᴄʜᴇᴄᴋ ᴛʜᴇ ʙᴏᴛ's ʀᴇsᴘᴏɴsᴇ ᴛɪᴍᴇ ᴀɴᴅ sᴇʀᴠᴇʀ sᴛᴀᴛs!",
+        "answer": "⚡ ᴜsᴇ <code>/ping</code> ᴛᴏ ᴄʜᴇᴄᴋ ᴛʜᴇ ʙᴏᴛ's ʀᴇsᴘᴏɴsᴇ ᴛɪᴍᴇ ᴀɴᴅ sᴇʀᴠᴇʀ sᴛᴀᴛs!",
     },
     {
         "keywords": ["help", "commands", "what can you do", "features"],
-        "answer": "📖 ᴜsᴇ `/help` ᴛᴏ sᴇᴇ ᴀʟʟ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs!\n\n🎵 I have 100+ features including music, admin tools, games, crypto, and more!",
+        "answer": "📖 ᴜsᴇ <code>/help</code> ᴛᴏ sᴇᴇ ᴀʟʟ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs!\n\n🎵 I have 100+ features including music, admin tools, games, crypto, and more!",
     },
     {
         "keywords": ["settings", "config", "configure"],
-        "answer": "⚙️ ᴜsᴇ `/settings` ᴛᴏ ᴄᴏɴꜰɪɢᴜʀᴇ ᴛʜᴇ ʙᴏᴛ ꜰᴏʀ ʏᴏᴜʀ ɢʀᴏᴜᴘ.",
+        "answer": "⚙️ ᴜsᴇ <code>/settings</code> ᴛᴏ ᴄᴏɴꜰɪɢᴜʀᴇ ᴛʜᴇ ʙᴏᴛ ꜰᴏʀ ʏᴏᴜʀ ɢʀᴏᴜᴘ.",
     },
     {
         "keywords": ["stats", "statistics", "info", "uptime"],
-        "answer": "📊 ᴜsᴇ `/stats` ᴛᴏ sᴇᴇ ʙᴏᴛ sᴛᴀᴛɪsᴛɪᴄs.\n`/ping` ꜰᴏʀ sᴇʀᴠᴇʀ ɪɴꜰᴏ.",
+        "answer": "📊 ᴜsᴇ <code>/stats</code> ᴛᴏ sᴇᴇ ʙᴏᴛ sᴛᴀᴛɪsᴛɪᴄs.\n<code>/ping</code> ꜰᴏʀ sᴇʀᴠᴇʀ ɪɴꜰᴏ.",
     },
     {
         "keywords": ["loop", "repeat"],
-        "answer": "🔁 Loop Mode:\n\n`/loop` — ᴛᴏɢɢʟᴇ ʟᴏᴏᴘ\n`/loop enable` — ᴇɴᴀʙʟᴇ ʟᴏᴏᴩ\n`/loop disable` — ᴅɪsᴀʙʟᴇ ʟᴏᴏᴩ",
+        "answer": "🔁 Loop Mode:\n\n<code>/loop</code> — ᴛᴏɢɢʟᴇ ʟᴏᴏᴘ\n<code>/loop enable</code> — ᴇɴᴀʙʟᴇ ʟᴏᴏᴩ\n<code>/loop disable</code> — ᴅɪsᴀʙʟᴇ ʟᴏᴏᴩ",
     },
     {
         "keywords": ["volume", "vol", "loud", "quiet", "sound"],
-        "answer": "🔊 Volume:\n\n`/vol [0-200]` — sᴇᴛ ᴠᴏʟᴜᴍᴇ\nᴇxᴀᴍᴘʟᴇ: `/vol 150`",
+        "answer": "🔊 Volume:\n\n<code>/vol [0-200]</code> — sᴇᴛ ᴠᴏʟᴜᴍᴇ\nᴇxᴀᴍᴘʟᴇ: <code>/vol 150</code>",
     },
     {
         "keywords": ["shuffle", "random", "mix"],
-        "answer": "🔀 Shuffle:\n\n`/shuffle` — sʜᴜꜰꜰʟᴇ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ǫᴜᴇᴜᴇ",
+        "answer": "🔀 Shuffle:\n\n<code>/shuffle</code> — sʜᴜꜰꜰʟᴇ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ǫᴜᴇᴜᴇ",
     },
     {
         "keywords": ["speed", "rate", "fast", "slow", "tempo"],
-        "answer": "🚀 Playback Speed:\n\n`/speed [0.5-4.0]` — ᴄʜᴀɴɢᴇ sᴩᴇᴇᴅ\nᴇxᴀᴍᴘʟᴇ: `/speed 1.5`",
+        "answer": "🚀 Playback Speed:\n\n<code>/speed [0.5-4.0]</code> — ᴄʜᴀɴɢᴇ sᴩᴇᴇᴅ\nᴇxᴀᴍᴘʟᴇ: <code>/speed 1.5</code>",
     },
     {
         "keywords": ["upi", "pay", "payment", "qr", "money"],
-        "answer": "💳 UPI Payment:\n\n`/upi [UPI_ID]` — ɢᴇɴᴇʀᴀᴛᴇ ᴀ QR ᴄᴏᴅᴇ ꜰᴏʀ ᴀɴʏ UPI ɪᴅ",
+        "answer": "💳 UPI Payment:\n\n<code>/upi [UPI_ID]</code> — ɢᴇɴᴇʀᴀᴛᴇ ᴀ QR ᴄᴏᴅᴇ ꜰᴏʀ ᴀɴʏ UPI ɪᴅ",
     },
     {
         "keywords": ["crypto", "bitcoin", "ethereum", "ton", "usdt", "price", "coin"],
-        "answer": "💰 Crypto Commands:\n\n`/ton` — TON ᴘʀɪᴄᴇ\n`/usdt` — Tether ᴩʀɪᴄᴇ\n`/tonbal [wallet]` — ᴄʜᴇᴄᴋ TON ᴡᴀʟʟᴇᴛ",
+        "answer": "💰 Crypto Commands:\n\n<code>/ton</code> — TON ᴘʀɪᴄᴇ\n<code>/usdt</code> — Tether ᴩʀɪᴄᴇ\n<code>/tonbal [wallet]</code> — ᴄʜᴇᴄᴋ TON ᴡᴀʟʟᴇᴛ",
     },
     {
         "keywords": ["github", "git", "repo", "code"],
-        "answer": f"🌐 GitHub Manager:\n\n`/github` — ᴍᴀɴᴀɢᴇ ɢɪᴛʜᴜʙ ʀᴇᴩᴏs\n\n🔗 Bot Repo: {config.UPSTREAM_REPO}",
+        "answer": f"🌐 GitHub Manager:\n\n<code>/github</code> — ᴍᴀɴᴀɢᴇ ɢɪᴛʜᴜʙ ʀᴇᴩᴏs\n\n🔗 Bot Repo: {config.UPSTREAM_REPO}",
     },
     {
         "keywords": ["afk", "away", "offline", "busy"],
-        "answer": "🌙 AFK Mode:\n\n`/afk [reason]` — sᴇᴛ ʏᴏᴜʀsᴇʟꜰ ᴀs AFK\nBᴏᴛ ᴡɪʟʟ ᴀᴜᴛᴏ-ʀᴇᴩʟʏ ᴡʜᴇɴ ᴍᴇɴᴛɪᴏɴᴇᴅ.",
+        "answer": "🌙 AFK Mode:\n\n<code>/afk [reason]</code> — sᴇᴛ ʏᴏᴜʀsᴇʟꜰ ᴀs AFK\nBᴏᴛ ᴡɪʟʟ ᴀᴜᴛᴏ-ʀᴇᴩʟʏ ᴡʜᴇɴ ᴍᴇɴᴛɪᴏɴᴇᴅ.",
     },
     {
         "keywords": ["fight", "game", "chatfight", "word", "emoji"],
-        "answer": "🎮 ChatFight Game:\n\n`/chatfight` — sᴛᴀʀᴛ ᴀ ᴡᴏʀᴅ/ᴇᴍᴏᴊɪ ɢᴀᴍᴇ\n`/gametop` — ᴠɪᴇᴡ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ",
+        "answer": "🎮 ChatFight Game:\n\n<code>/chatfight</code> — sᴛᴀʀᴛ ᴀ ᴡᴏʀᴅ/ᴇᴍᴏᴊɪ ɢᴀᴍᴇ\n<code>/gametop</code> — ᴠɪᴇᴡ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ",
     },
     {
         "keywords": ["broadcast", "announce", "message all"],
-        "answer": "📢 Broadcast (Owner/Sudo only):\n\n`/broadcast [message]` — sᴇɴᴅ ᴛᴏ ᴀʟʟ ɢʀᴏᴜᴩs",
+        "answer": "📢 Broadcast (Owner/Sudo only):\n\n<code>/broadcast [message]</code> — sᴇɴᴅ ᴛᴏ ᴀʟʟ ɢʀᴏᴜᴩs",
     },
     {
         "keywords": ["ban", "kick", "mute", "restrict"],
-        "answer": "🔨 Admin Commands:\n\n`/ban` — ʙᴀɴ ᴀ ᴜsᴇʀ\n`/kick` — ᴋɪᴄᴋ ᴀ ᴜsᴇʀ\n`/mute` — ᴍᴜᴛᴇ ᴀ ᴜsᴇʀ\n\nReply to a user's message to use these.",
+        "answer": "🔨 Admin Commands:\n\n<code>/ban</code> — ʙᴀɴ ᴀ ᴜsᴇʀ\n<code>/kick</code> — ᴋɪᴄᴋ ᴀ ᴜsᴇʀ\n<code>/mute</code> — ᴍᴜᴛᴇ ᴀ ᴜsᴇʀ\n\nReply to a user's message to use these.",
     },
     {
         "keywords": ["translate", "language", "lang", "hindi", "english"],
-        "answer": "🌐 Translation:\n\n`/tr [language_code] [text]` — ᴛʀᴀɴsʟᴀᴛᴇ ᴛᴇxᴛ\nᴇxᴀᴍᴩʟᴇ: `/tr hi Hello world`",
+        "answer": "🌐 Translation:\n\n<code>/tr [language_code] [text]</code> — ᴛʀᴀɴsʟᴀᴛᴇ ᴛᴇxᴛ\nᴇxᴀᴍᴩʟᴇ: <code>/tr hi Hello world</code>",
     },
     {
         "keywords": ["weather", "temperature", "forecast", "climate"],
-        "answer": "🌤️ Weather:\n\n`/weather [city]` — ɢᴇᴛ ᴡᴇᴀᴛʜᴇʀ ɪɴꜰᴏ\nᴇxᴀᴍᴩʟᴇ: `/weather Mumbai`",
+        "answer": "🌤️ Weather:\n\n<code>/weather [city]</code> — ɢᴇᴛ ᴡᴇᴀᴛʜᴇʀ ɪɴꜰᴏ\nᴇxᴀᴍᴩʟᴇ: <code>/weather Mumbai</code>",
     },
     {
         "keywords": ["sticker", "stickers", "pack"],
-        "answer": "🎨 Stickers:\n\n`/kang` — ᴄʀᴇᴀᴛᴇ sᴛɪᴄᴋᴇʀ ꜰʀᴏᴍ ɪᴍᴀɢᴇ\n`/sticker` — ᴄᴏɴᴠᴇʀᴛ ɪᴍᴀɢᴇ ᴛᴏ sᴛɪᴄᴋᴇʀ",
+        "answer": "🎨 Stickers:\n\n<code>/kang</code> — ᴄʀᴇᴀᴛᴇ sᴛɪᴄᴋᴇʀ ꜰʀᴏᴍ ɪᴍᴀɢᴇ\n<code>/sticker</code> — ᴄᴏɴᴠᴇʀᴛ ɪᴍᴀɢᴇ ᴛᴏ sᴛɪᴄᴋᴇʀ",
     },
     {
         "keywords": ["what is love", "love", "relationship"],
-        "answer": "❤️ Love is a beautiful feeling! 🌹\n\nBut for me, MUSIC is love! 🎵\n\nPlay your favorite song with `/play`",
+        "answer": "❤️ Love is a beautiful feeling! 🌹\n\nBut for me, MUSIC is love! 🎵\n\nPlay your favorite song with <code>/play</code>",
     },
     {
         "keywords": ["joke", "funny", "laugh", "humor"],
-        "answer": "😂 ᴜsᴇ `/joke` ꜰᴏʀ ʀᴀɴᴅᴏᴍ ᴊᴏᴋᴇs!\n\n🤣 ᴡʜʏ ᴅɪᴅ ᴛʜᴇ ᴍᴜsɪᴄɪᴀɴ ɢᴇᴛ ᴀʀʀᴇsᴛᴇᴅ?\nʙᴇᴄᴀᴜsᴇ ʜᴇ ɢᴏᴛ ᴄᴀᴜɢʜᴛ ɪɴ ᴀ ʙᴀss ᴄʟᴇꜰ! 🎵",
+        "answer": "😂 ᴜsᴇ <code>/joke</code> ꜰᴏʀ ʀᴀɴᴅᴏᴍ ᴊᴏᴋᴇs!\n\n🤣 ᴡʜʏ ᴅɪᴅ ᴛʜᴇ ᴍᴜsɪᴄɪᴀɴ ɢᴇᴛ ᴀʀʀᴇsᴛᴇᴅ?\nʙᴇᴄᴀᴜsᴇ ʜᴇ ɢᴏᴛ ᴄᴀᴜɢʜᴛ ɪɴ ᴀ ʙᴀss ᴄʟᴇꜰ! 🎵",
     },
     {
         "keywords": ["thanks", "thank you", "thx", "ty", "appreciate"],
@@ -137,7 +137,7 @@ _SEED = [
     },
     {
         "keywords": ["good morning", "morning", "gm"],
-        "answer": "🌅 Good Morning! 🌞\n\nStart your day with some music! 🎵\nUse `/play` to get the beats going!",
+        "answer": "🌅 Good Morning! 🌞\n\nStart your day with some music! 🎵\nUse <code>/play</code> to get the beats going!",
     },
     {
         "keywords": ["good night", "night", "gn", "sleep"],
@@ -145,7 +145,7 @@ _SEED = [
     },
     {
         "keywords": ["how are you", "how r u", "how do you do", "sup", "wassup"],
-        "answer": "😄 ɪ'ᴍ ᴅᴏɪɴɢ ɢʀᴇᴀᴛ, ᴛʜᴀɴᴋs ꜰᴏʀ ᴀsᴋɪɴɢ! 🎵\n\nAlways ready to stream music for you! Use `/play` to start!",
+        "answer": "😄 ɪ'ᴍ ᴅᴏɪɴɢ ɢʀᴇᴀᴛ, ᴛʜᴀɴᴋs ꜰᴏʀ ᴀsᴋɪɴɢ! 🎵\n\nAlways ready to stream music for you! Use <code>/play</code> to start!",
     },
 ]
 
