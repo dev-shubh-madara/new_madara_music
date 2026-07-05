@@ -489,16 +489,22 @@ class Call(PyTgCalls):
 
     async def start(self):
         LOGGER(__name__).info("Starting PyTgCalls Client...\n")
-        if config.STRING1:
-            await self.one.start()
-        if config.STRING2:
-            await self.two.start()
-        if config.STRING3:
-            await self.three.start()
-        if config.STRING4:
-            await self.four.start()
-        if config.STRING5:
-            await self.five.start()
+        for string, client, label in [
+            (config.STRING1, self.one,   "1"),
+            (config.STRING2, self.two,   "2"),
+            (config.STRING3, self.three, "3"),
+            (config.STRING4, self.four,  "4"),
+            (config.STRING5, self.five,  "5"),
+        ]:
+            if string:
+                try:
+                    await client.start()
+                except Exception as e:
+                    LOGGER(__name__).warning(
+                        f"PyTgCalls client {label} failed to start "
+                        f"({type(e).__name__}). "
+                        "Provide a valid STRING_SESSION to enable voice-chat streaming."
+                    )
 
     async def decorators(self):
         for string, client in [
