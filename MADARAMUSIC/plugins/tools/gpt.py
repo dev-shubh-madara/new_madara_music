@@ -21,15 +21,15 @@ _SEED = [
     },
     {
         "keywords": ["who", "are", "you", "bot", "name", "introduce", "yourself"],
-        "answer": "🤖 ɪ ᴀᴍ *MADARA MUSIC* — ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ᴍᴜsɪᴄ ʙᴏᴛ!\n\n🎵 ɪ ᴄᴀɴ ᴘʟᴀʏ ᴍᴜsɪᴄ, ᴍᴀɴᴀɢᴇ ǫᴜᴇᴜᴇs, ᴀɴᴅ ᴅᴏ ᴍᴜᴄʜ ᴍᴏʀᴇ!\n\n⚡ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀᴅᴀʀᴀ",
+        "answer": "🤖 ɪ ᴀᴍ *MADARA MUSIC* — ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ᴍᴜsɪᴄ ʙᴏᴛ!\n\n🎵 ɪ ᴄᴀɴ ᴘʟᴀʏ ᴍᴜsɪᴄ, ᴍᴀɴᴀɢᴇ ǫᴜᴇᴜᴇs, ᴀɴᴅ ᴅᴏ ᴍᴜᴄʜ ᴍᴏʀᴇ!\n\n⚡ <tg-emoji emoji-id="5213095308040356426">P</tg-emoji><tg-emoji emoji-id="5212943085809454431">O</tg-emoji><tg-emoji emoji-id="5213148466850580086">W</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji> <tg-emoji emoji-id="5213400521301313365">B</tg-emoji><tg-emoji emoji-id="5210932667452768696">Y</tg-emoji> <tg-emoji emoji-id="5210890482283988215">M</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji>",
     },
     {
         "keywords": ["owner", "creator", "developer", "dev", "made", "who made"],
-        "answer": f"👑 ᴍʏ ᴏᴡɴᴇʀ ɪs @{config.OWNER_USERNAME}\n\n🎵 ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀᴅᴀʀᴀ",
+        "answer": f"👑 ᴍʏ ᴏᴡɴᴇʀ ɪs @{config.OWNER_USERNAME}\n\n🎵 <tg-emoji emoji-id="5213095308040356426">P</tg-emoji><tg-emoji emoji-id="5212943085809454431">O</tg-emoji><tg-emoji emoji-id="5213148466850580086">W</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji> <tg-emoji emoji-id="5213400521301313365">B</tg-emoji><tg-emoji emoji-id="5210932667452768696">Y</tg-emoji> <tg-emoji emoji-id="5210890482283988215">M</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji>",
     },
     {
         "keywords": ["play", "music", "song", "stream", "how to play"],
-        "answer": "🎵 ᴛᴏ ᴘʟᴀʏ ᴍᴜsɪᴄ, ᴜsᴇ:\n\n`/play [song name or YouTube link]`\n\n✅ ɪ sᴜᴘᴘᴏʀᴛ YouTube, Spotify, Apple Music & SoundCloud!\n\n⚡ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀᴅᴀʀᴀ",
+        "answer": "🎵 ᴛᴏ ᴘʟᴀʏ ᴍᴜsɪᴄ, ᴜsᴇ:\n\n`/play [song name or YouTube link]`\n\n✅ ɪ sᴜᴘᴘᴏʀᴛ YouTube, Spotify, Apple Music & SoundCloud!\n\n⚡ <tg-emoji emoji-id="5213095308040356426">P</tg-emoji><tg-emoji emoji-id="5212943085809454431">O</tg-emoji><tg-emoji emoji-id="5213148466850580086">W</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji> <tg-emoji emoji-id="5213400521301313365">B</tg-emoji><tg-emoji emoji-id="5210932667452768696">Y</tg-emoji> <tg-emoji emoji-id="5210890482283988215">M</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji>",
     },
     {
         "keywords": ["skip", "next", "change", "track"],
@@ -129,7 +129,7 @@ _SEED = [
     },
     {
         "keywords": ["thanks", "thank you", "thx", "ty", "appreciate"],
-        "answer": "😊 You're welcome! Always happy to help! 🎵\n\n⚡ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀᴅᴀʀᴀ",
+        "answer": "😊 You're welcome! Always happy to help! 🎵\n\n⚡ <tg-emoji emoji-id="5213095308040356426">P</tg-emoji><tg-emoji emoji-id="5212943085809454431">O</tg-emoji><tg-emoji emoji-id="5213148466850580086">W</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji> <tg-emoji emoji-id="5213400521301313365">B</tg-emoji><tg-emoji emoji-id="5210932667452768696">Y</tg-emoji> <tg-emoji emoji-id="5210890482283988215">M</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji>",
     },
     {
         "keywords": ["support", "help me", "problem", "issue", "error"],
@@ -214,21 +214,21 @@ async def chat_ai(bot, message: Message):
 
     if answer:
         await message.reply_text(
-            f"<code>ʀᴀᴅʜᴀ ᴍᴜsɪᴄ</code>\n\n"
+            f"<tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji><tg-emoji emoji-id="5213415326053582248">H</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji> <tg-emoji emoji-id="5210890482283988215">M</tg-emoji><tg-emoji emoji-id="5213277251444952289">U</tg-emoji><tg-emoji emoji-id="5212928963956983272">S</tg-emoji><tg-emoji emoji-id="5211032856154885824">I</tg-emoji><tg-emoji emoji-id="5210687171417097576">C</tg-emoji>\n\n"
             f"🤖 **MADARA AI:**\n\n{answer}\n\n"
-            f"<code>ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀᴅᴀʀᴀ</code>",
+            f"<tg-emoji emoji-id="5213095308040356426">P</tg-emoji><tg-emoji emoji-id="5212943085809454431">O</tg-emoji><tg-emoji emoji-id="5213148466850580086">W</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji> <tg-emoji emoji-id="5213400521301313365">B</tg-emoji><tg-emoji emoji-id="5210932667452768696">Y</tg-emoji> <tg-emoji emoji-id="5210890482283988215">M</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji>",
             parse_mode=ParseMode.HTML,
         )
     else:
         await message.reply_text(
-            f"<code>ʀᴀᴅʜᴀ ᴍᴜsɪᴄ</code>\n\n"
+            f"<tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji><tg-emoji emoji-id="5213415326053582248">H</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji> <tg-emoji emoji-id="5210890482283988215">M</tg-emoji><tg-emoji emoji-id="5213277251444952289">U</tg-emoji><tg-emoji emoji-id="5212928963956983272">S</tg-emoji><tg-emoji emoji-id="5211032856154885824">I</tg-emoji><tg-emoji emoji-id="5210687171417097576">C</tg-emoji>\n\n"
             "🤔 ɪ ᴅɪᴅɴ'ᴛ ᴜɴᴅᴇʀsᴛᴀɴᴅ ᴛʜᴀᴛ.\n\n"
             "ᴛʀʏ ᴀsᴋɪɴɢ ᴀʙᴏᴜᴛ:\n"
             "• ʜᴏᴡ ᴛᴏ ᴩʟᴀʏ ᴍᴜsɪᴄ\n"
             "• ʙᴏᴛ ᴄᴏᴍᴍᴀɴᴅs\n"
             "• ᴀᴅᴍɪɴ ᴛᴏᴏʟs\n"
             "• ɢᴀᴍᴇs & ᴛᴏᴏʟs\n\n"
-            f"<code>ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀᴅᴀʀᴀ</code>",
+            f"<tg-emoji emoji-id="5213095308040356426">P</tg-emoji><tg-emoji emoji-id="5212943085809454431">O</tg-emoji><tg-emoji emoji-id="5213148466850580086">W</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji> <tg-emoji emoji-id="5213400521301313365">B</tg-emoji><tg-emoji emoji-id="5210932667452768696">Y</tg-emoji> <tg-emoji emoji-id="5210890482283988215">M</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji>",
             parse_mode=ParseMode.HTML,
         )
 

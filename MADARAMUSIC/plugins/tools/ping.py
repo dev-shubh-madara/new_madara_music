@@ -23,7 +23,7 @@ async def ping_com(client, message: Message, _):
 
     # ── Radha Music header ─────────────────────────────────────────
     header = (
-        "<code>ʀᴀᴅʜᴀ ᴍᴜsɪᴄ</code>\n\n"
+        "<tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji><tg-emoji emoji-id="5213415326053582248">H</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji> <tg-emoji emoji-id="5210890482283988215">M</tg-emoji><tg-emoji emoji-id="5213277251444952289">U</tg-emoji><tg-emoji emoji-id="5212928963956983272">S</tg-emoji><tg-emoji emoji-id="5211032856154885824">I</tg-emoji><tg-emoji emoji-id="5210687171417097576">C</tg-emoji>\n\n"
         f"⚡ {app.mention} ɪs ᴘɪɴɢɪɴɢ... 🎵"
     )
     response = await message.reply_photo(
@@ -37,7 +37,7 @@ async def ping_com(client, message: Message, _):
 
     # ── Full ping result with Powered by Madara ────────────────────
     ping_text = (
-        "<code>ʀᴀᴅʜᴀ ᴍᴜsɪᴄ</code>\n\n"
+        "<tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji><tg-emoji emoji-id="5213415326053582248">H</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji> <tg-emoji emoji-id="5210890482283988215">M</tg-emoji><tg-emoji emoji-id="5213277251444952289">U</tg-emoji><tg-emoji emoji-id="5212928963956983272">S</tg-emoji><tg-emoji emoji-id="5211032856154885824">I</tg-emoji><tg-emoji emoji-id="5210687171417097576">C</tg-emoji>\n\n"
         "<b>╔══════════════════╗\n"
         "🎵 𝗠𝗔𝗗𝗔𝗥𝗔 𝗠𝗨𝗦𝗜𝗖 𝗣𝗜𝗡𝗚\n"
         "╚══════════════════╝</b>\n\n"
@@ -48,7 +48,7 @@ async def ping_com(client, message: Message, _):
         f"💻 ᴄᴩᴜ : {CPU}\n"
         f"💿 ᴅɪsᴋ : {DISK}\n"
         f"📡 ᴩʏ-ᴛɢᴄᴀʟʟs : <code>{pytgping}ᴍs</code>\n\n"
-        "<code>ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀᴅᴀʀᴀ</code>"
+        "<tg-emoji emoji-id="5213095308040356426">P</tg-emoji><tg-emoji emoji-id="5212943085809454431">O</tg-emoji><tg-emoji emoji-id="5213148466850580086">W</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5213337333742454261">E</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji> <tg-emoji emoji-id="5213400521301313365">B</tg-emoji><tg-emoji emoji-id="5210932667452768696">Y</tg-emoji> <tg-emoji emoji-id="5210890482283988215">M</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211094355791594395">D</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji><tg-emoji emoji-id="5211009581727107238">R</tg-emoji><tg-emoji emoji-id="5210820276748566172">A</tg-emoji>"
     )
 
     await response.edit_caption(
